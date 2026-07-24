@@ -3532,19 +3532,20 @@ img {
 
 /* ==========================================================================
    Consultation & Product Selection Section ("Need Help Choosing")
+   Black & White Theme
    ========================================================================== */
 .consultation-section {
   padding: 40px 0 80px;
 }
 
 .consultation-card {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  background: linear-gradient(135deg, #09090b 0%, #18181b 50%, #09090b 100%);
   border-radius: 28px;
   padding: 48px;
   color: #ffffff;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .consultation-card::before {
@@ -3554,7 +3555,7 @@ img {
   right: -120px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(230, 0, 126, 0.25) 0%, rgba(230, 0, 126, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
   border-radius: 50%;
 }
@@ -3566,7 +3567,7 @@ img {
   left: -150px;
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(37, 211, 102, 0.15) 0%, rgba(37, 211, 102, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
   pointer-events: none;
   border-radius: 50%;
 }
@@ -3585,9 +3586,9 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(230, 0, 126, 0.15);
-  border: 1px solid rgba(230, 0, 126, 0.35);
-  color: #ff66b3;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
@@ -3599,9 +3600,9 @@ img {
 .pulse-dot {
   width: 8px;
   height: 8px;
-  background-color: #ff3399;
+  background-color: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 0 10px #ff3399;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   animation: pulseDot 1.8s infinite ease-in-out;
 }
 
@@ -3616,7 +3617,7 @@ img {
   line-height: 1.25;
   color: #ffffff;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, #ffffff 60%, #cbd5e1 100%);
+  background: linear-gradient(135deg, #ffffff 70%, #a1a1aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -3624,7 +3625,7 @@ img {
 .consultation-desc {
   font-size: 15px;
   line-height: 1.6;
-  color: #94a3b8;
+  color: #a1a1aa;
   margin-bottom: 28px;
 }
 
@@ -3640,7 +3641,7 @@ img {
   align-items: flex-start;
   gap: 14px;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 12px 16px;
   border-radius: 14px;
   transition: all 0.25s ease;
@@ -3648,6 +3649,7 @@ img {
 
 .consultation-feature-item:hover {
   background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
   transform: translateX(4px);
 }
 
@@ -3666,14 +3668,14 @@ img {
 .consultation-feature-item strong {
   display: block;
   font-size: 14px;
-  color: #f8fafc;
+  color: #ffffff;
   font-weight: 600;
   margin-bottom: 2px;
 }
 
 .consultation-feature-item span {
   font-size: 12.5px;
-  color: #94a3b8;
+  color: #a1a1aa;
 }
 
 /* Quick Topic Selector */
@@ -3685,7 +3687,7 @@ img {
   display: block;
   font-size: 13px;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #d4d4d8;
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -3699,8 +3701,8 @@ img {
 
 .topic-chip {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #d4d4d8;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 13px;
@@ -3710,16 +3712,17 @@ img {
 }
 
 .topic-chip:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.16);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .topic-chip.active {
-  background: linear-gradient(135deg, #e6007e, #b30062);
-  color: #ffffff;
-  border-color: #e6007e;
-  box-shadow: 0 4px 14px rgba(230, 0, 126, 0.4);
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  border-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
 }
 
 /* Actions */
@@ -3734,21 +3737,22 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-  color: #ffffff !important;
+  background: #ffffff;
+  color: #000000 !important;
   padding: 14px 24px;
   border-radius: 14px;
   font-weight: 700;
   font-size: 15px;
   text-decoration: none;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
 }
 
 .btn-wa-glowing:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
-  color: #ffffff !important;
+  background: #f4f4f5;
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+  color: #000000 !important;
 }
 
 .btn-call-store {
@@ -3778,7 +3782,7 @@ img {
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: #64748b;
+  color: #a1a1aa;
 }
 
 /* Right Column: Visual Collage */
@@ -3792,9 +3796,9 @@ img {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background-color: #0f172a;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: #18181b;
 }
 
 .consultation-hero-img {
@@ -3812,7 +3816,7 @@ img {
 .hero-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.65) 100%);
+  background: linear-gradient(180deg, rgba(9, 9, 11, 0.1) 0%, rgba(9, 9, 11, 0.7) 100%);
   pointer-events: none;
 }
 
@@ -3821,7 +3825,7 @@ img {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(9, 9, 11, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -3830,7 +3834,7 @@ img {
   border-radius: 30px;
   font-size: 12px;
   font-weight: 600;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero-image-badge-top {
@@ -3852,7 +3856,7 @@ img {
 
 .mini-product-card {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
   padding: 12px 8px;
   text-align: center;
@@ -3865,7 +3869,7 @@ img {
 
 .mini-product-card:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(230, 0, 126, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-4px);
 }
 
@@ -3874,7 +3878,7 @@ img {
   height: 64px;
   object-fit: contain;
   margin-bottom: 8px;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
 .mini-product-info {
@@ -3887,7 +3891,7 @@ img {
 .mini-tag {
   font-size: 10px;
   text-transform: uppercase;
-  color: #ff66b3;
+  color: #a1a1aa;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
