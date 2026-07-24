@@ -389,21 +389,9 @@ function renderHomeView(container) {
                   </div>
                 </div>
 
-                <!-- Interactive Quick Query Topics -->
-                <div class="consultation-topics">
-                  <span class="topics-label">Select topic to ask about:</span>
-                  <div class="topic-chips">
-                    <button class="topic-chip active" onclick="selectConsultationTopic(this, 'Lunch Box Sets')">🍱 Lunch Box Sets</button>
-                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Modular Pantry Makeover')">🫙 Pantry Storage</button>
-                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Eco Water Bottles')">🥛 Eco Bottles</button>
-                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Fridge Smart Storage')">❄️ Fridge Storage</button>
-                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Gift Sets & Hampers')">🎁 Gift Sets</button>
-                  </div>
-                </div>
-
                 <!-- CTA Actions -->
                 <div class="consultation-actions">
-                  <a id="consultation-wa-btn" href="https://wa.me/919847012345?text=Hello!%20I%20need%20help%20selecting%20Tupperware%20Lunch%20Box%20Sets%20for%20my%20home." target="_blank" class="btn btn-wa-glowing">
+                  <a id="consultation-wa-btn" href="https://wa.me/919847012345?text=Hello!%20I%20need%20help%20selecting%20Tupperware%20products%20for%20my%20home." target="_blank" class="btn btn-wa-glowing">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                     <span>Chat on WhatsApp Now</span>
                   </a>
