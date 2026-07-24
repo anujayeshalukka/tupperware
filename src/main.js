@@ -425,40 +425,7 @@ function renderHomeView(container) {
                   </div>
                 </div>
 
-                <!-- Showcase Product Mini Cards -->
-                <div class="consultation-mini-products">
-                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=kitchen'" title="View Dry Storage Products">
-                    <img src="/images/cat_kitchen.png" alt="Dry Storage" />
-                    <div class="mini-product-info">
-                      <span class="mini-tag">Popular</span>
-                      <strong class="mini-name">Dry Storage</strong>
-                    </div>
-                  </div>
-
-                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=refrigerator'" title="View Fridge Storage Products">
-                    <img src="/images/cat_refrigerator.png" alt="Fridge Storage" />
-                    <div class="mini-product-info">
-                      <span class="mini-tag">Freshness</span>
-                      <strong class="mini-name">Fridge Smart</strong>
-                    </div>
-                  </div>
-
-                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=bottles'" title="View Eco Bottles">
-                    <img src="/images/cat_bottles.png" alt="Eco Bottles" />
-                    <div class="mini-product-info">
-                      <span class="mini-tag">Daily</span>
-                      <strong class="mini-name">Eco Bottles</strong>
-                    </div>
-                  </div>
-
-                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=thermals'" title="View Insulated Thermals">
-                    <img src="/images/cat_thermals.png" alt="Thermals" />
-                    <div class="mini-product-info">
-                      <span class="mini-tag">Insulated</span>
-                      <strong class="mini-name">Thermals</strong>
-                    </div>
-                  </div>
-                </div>
+             
               </div>
 
             </div>

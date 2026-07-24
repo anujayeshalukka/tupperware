@@ -1426,6 +1426,34 @@ img {
   color: var(--text-muted);
 }
 
+/* Footer Social Media Buttons */
+.social-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background-color: #f8fafc;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.social-icon-btn:hover {
+  background-color: var(--text-primary);
+  color: #ffffff;
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.social-icon-btn.social-icon-wa:hover {
+  background-color: #25D366;
+  color: #ffffff;
+  border-color: #25D366;
+}
+
 /* --- Newsletter Subscription (Seamless White Theme) --- */
 .newsletter-card {
   background: transparent;
