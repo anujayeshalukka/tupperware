@@ -1362,24 +1362,41 @@ img {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1.2fr 1.5fr 1.5fr 2fr;
-  gap: 32px;
+  grid-template-columns: 2.2fr 1fr 1.2fr 1.5fr;
+  gap: 48px;
   margin-bottom: 64px;
 }
 
-.footer-brand p {
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.footer-brand p.brand-desc {
   color: var(--text-secondary);
   font-size: 14px;
+  line-height: 1.6;
   margin-top: 16px;
-  max-width: 320px;
+  margin-bottom: 28px;
+  max-width: 340px;
 }
 
 .footer-heading {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 20px;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 18px;
 }
 
 .footer-list {
@@ -1409,50 +1426,69 @@ img {
   color: var(--text-muted);
 }
 
-/* --- Newsletter Card --- */
+/* --- Newsletter Subscription (Seamless White Theme) --- */
 .newsletter-card {
-  background-color: #2b2b2b;
-  padding: 32px;
-  border-radius: var(--radius-lg);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
+  max-width: 340px;
+}
+
+.newsletter-desc {
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .newsletter-input {
   width: 100%;
-  background: transparent;
-  border: 1px solid #555555;
-  color: #ffffff;
-  padding: 14px 16px;
-  font-size: 14px;
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  font-size: 13.5px;
   outline: none;
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .newsletter-input::placeholder {
-  color: #999999;
+  color: var(--text-muted);
 }
 
 .newsletter-input:focus {
-  border-color: #79d6d9;
+  border-color: var(--text-primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
 }
 
 .btn-newsletter {
-  background-color: #79d6d9;
+  background-color: var(--text-primary);
   color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   border: none;
-  border-radius: 30px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: opacity var(--transition-fast);
-  margin-top: 8px;
+  transition: all var(--transition-fast);
+  margin-top: 4px;
 }
 
 .btn-newsletter:hover {
-  opacity: 0.85;
+  background-color: #000000;
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 /* --- Floating Enquiry Drawer --- */
