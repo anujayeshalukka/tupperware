@@ -346,21 +346,133 @@ function renderHomeView(container) {
         </div>
       </section>
 
-      <!-- Final Consultation CTA -->
-      <section class="section" id="contact">
+      <!-- Final Consultation CTA / Product Selection Guidance -->
+      <section class="section consultation-section" id="contact">
         <div class="container">
-          <div class="cta-banner">
-            <h2>Need Help Choosing the Right Products?</h2>
-            <p>Talk directly with our official Tupperware specialists in Kerala. We assist with size recommendations, pantry organization planning, and exclusive gift sets.</p>
-            <div class="cta-buttons">
-              <a href="https://wa.me/919847012345?text=Hello!%20I%20need%20help%20selecting%20Tupperware%20products%20for%20my%20home." target="_blank" class="btn btn-wa">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                Chat on WhatsApp
-              </a>
-              <a href="tel:+919847012345" class="btn btn-secondary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Call Store (+91 98470 12345)
-              </a>
+          <div class="consultation-card">
+            <div class="consultation-grid">
+              
+              <!-- Left Column: Copy, Topics, Actions -->
+              <div class="consultation-content">
+                <div class="consultation-badge">
+                  <span class="pulse-dot"></span>
+                  <span>Free Personal Specialist Guidance</span>
+                </div>
+
+                <h2 class="consultation-title">Need Help Choosing the Right Tupperware?</h2>
+                <p class="consultation-desc">
+                  Connect directly with our official Tupperware specialists in Kerala. We help you choose exact container capacities, plan complete kitchen makeovers, and curate custom gift sets.
+                </p>
+
+                <!-- Value Highlights -->
+                <div class="consultation-features">
+                  <div class="consultation-feature-item">
+                    <div class="feature-icon">📐</div>
+                    <div>
+                      <strong>Custom Size & Capacity Guidance</strong>
+                      <span>Match your family size and storage requirements perfectly</span>
+                    </div>
+                  </div>
+                  <div class="consultation-feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <div>
+                      <strong>100% Genuine & Lifetime Guarantee</strong>
+                      <span>Official Kerala store support & authentic original items</span>
+                    </div>
+                  </div>
+                  <div class="consultation-feature-item">
+                    <div class="feature-icon">🚚</div>
+                    <div>
+                      <strong>Doorstep Express Delivery</strong>
+                      <span>Fast & safe delivery anywhere across Kerala</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Interactive Quick Query Topics -->
+                <div class="consultation-topics">
+                  <span class="topics-label">Select topic to ask about:</span>
+                  <div class="topic-chips">
+                    <button class="topic-chip active" onclick="selectConsultationTopic(this, 'Lunch Box Sets')">🍱 Lunch Box Sets</button>
+                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Modular Pantry Makeover')">🫙 Pantry Storage</button>
+                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Eco Water Bottles')">🥛 Eco Bottles</button>
+                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Fridge Smart Storage')">❄️ Fridge Storage</button>
+                    <button class="topic-chip" onclick="selectConsultationTopic(this, 'Gift Sets & Hampers')">🎁 Gift Sets</button>
+                  </div>
+                </div>
+
+                <!-- CTA Actions -->
+                <div class="consultation-actions">
+                  <a id="consultation-wa-btn" href="https://wa.me/919847012345?text=Hello!%20I%20need%20help%20selecting%20Tupperware%20Lunch%20Box%20Sets%20for%20my%20home." target="_blank" class="btn btn-wa-glowing">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span>Chat on WhatsApp Now</span>
+                  </a>
+                  <a href="tel:+919847012345" class="btn btn-call-store">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>Call Store (+91 98470 12345)</span>
+                  </a>
+                </div>
+
+                <div class="consultation-response-note">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>Instant response • Direct phone & WhatsApp support in Kerala</span>
+                </div>
+              </div>
+
+              <!-- Right Column: Tupperware Product Showcase & Visual Collage -->
+              <div class="consultation-visual">
+                <!-- Main Feature Banner Image -->
+                <div class="consultation-hero-image-wrapper">
+                  <img src="/images/consultation_tupperware.png" alt="Tupperware Product Selection Assistance" class="consultation-hero-img" loading="lazy" />
+                  <div class="hero-image-overlay"></div>
+                  
+                  <div class="hero-image-badge hero-image-badge-top">
+                    <span class="badge-icon">✨</span>
+                    <span>100% Genuine Tupperware</span>
+                  </div>
+
+                  <div class="hero-image-badge hero-image-badge-bottom">
+                    <span class="badge-icon">🛡️</span>
+                    <span>Lifetime Guarantee</span>
+                  </div>
+                </div>
+
+                <!-- Showcase Product Mini Cards -->
+                <div class="consultation-mini-products">
+                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=kitchen'" title="View Dry Storage Products">
+                    <img src="/images/cat_kitchen.png" alt="Dry Storage" />
+                    <div class="mini-product-info">
+                      <span class="mini-tag">Popular</span>
+                      <strong class="mini-name">Dry Storage</strong>
+                    </div>
+                  </div>
+
+                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=refrigerator'" title="View Fridge Storage Products">
+                    <img src="/images/cat_refrigerator.png" alt="Fridge Storage" />
+                    <div class="mini-product-info">
+                      <span class="mini-tag">Freshness</span>
+                      <strong class="mini-name">Fridge Smart</strong>
+                    </div>
+                  </div>
+
+                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=bottles'" title="View Eco Bottles">
+                    <img src="/images/cat_bottles.png" alt="Eco Bottles" />
+                    <div class="mini-product-info">
+                      <span class="mini-tag">Daily</span>
+                      <strong class="mini-name">Eco Bottles</strong>
+                    </div>
+                  </div>
+
+                  <div class="mini-product-card" onclick="window.location.hash = '#/shop?category=thermals'" title="View Insulated Thermals">
+                    <img src="/images/cat_thermals.png" alt="Thermals" />
+                    <div class="mini-product-info">
+                      <span class="mini-tag">Insulated</span>
+                      <strong class="mini-name">Thermals</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -2588,3 +2700,19 @@ function renderAboutStoreView(container) {
     </div>
   `;
 }
+
+// Global handler for Consultation topic chip selection
+window.selectConsultationTopic = function(btn, topicName) {
+  const container = btn.closest('.topic-chips');
+  if (container) {
+    container.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('active'));
+  }
+  btn.classList.add('active');
+
+  const waBtn = document.getElementById('consultation-wa-btn');
+  if (waBtn) {
+    const text = encodeURIComponent(`Hello! I need help selecting Tupperware ${topicName} for my home.`);
+    waBtn.href = `https://wa.me/919847012345?text=${text}`;
+  }
+};
+
