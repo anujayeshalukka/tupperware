@@ -552,19 +552,19 @@ img {
 }
 
 .hero-slide-bg-1 {
-  background-image: url('/images/hero_banner_store.png');
+  background-image: url('/images/hero_banner_store.jpg');
 }
 
 .hero-slide-bg-2 {
-  background-image: url('/images/hero_banner_kitchen.png');
+  background-image: url('/images/hero_banner_store2.jpg');
 }
 
 .hero-slide-bg-3 {
-  background-image: url('/images/hero_banner_bottles.png');
+  background-image: url('/images/hero_banner_store3.jpg');
 }
 
 .hero-slide-bg-4 {
-  background-image: url('/images/hero_banner_glass.png');
+  background-image: url('/images/hero_banner_store4.jpg');
 }
 
 .hero-slide-overlay {
