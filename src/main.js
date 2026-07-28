@@ -119,7 +119,7 @@ function updateActiveNavLink(hash) {
   links.forEach(link => {
     const href = link.getAttribute('href');
     if (!href) return; // Skip buttons like search/cart without href
-    
+
     if (hash.startsWith(href) && href !== '#/') {
       link.classList.add('active');
     } else if (hash === '#/' && href === '#/') {
@@ -155,63 +155,192 @@ function renderHomeView(container) {
         </div>
       </section>
 
-      <!-- Hero Section -->
-      <section class="hero-section" id="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div class="hero-content">
-              <div class="hero-tag">
-                <span class="hero-tag-dot"></span>
-                <span>Official Exclusive Store Franchise • Kerala</span>
-              </div>
-              <h1 class="hero-title">Discover Genuine Tupperware Products</h1>
-              <p class="hero-desc">
-                Browse premium kitchen storage, ergonomic water bottles, insulated lunch boxes, and home essentials from an official Tupperware store in Kerala.
-              </p>
-              <div class="hero-ctas">
-                <a href="#/shop" class="btn btn-primary">
-                  Browse Products
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-                <a href="https://wa.me/919847012345?text=Hi%20Tupperware%20Kerala!%20I%20would%20like%20to%20enquire%20about%20products." target="_blank" class="btn btn-wa hero-wa-btn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                  
-                  <span class="hero-wa-text">Contact on WhatsApp</span>
-                </a>
-              </div>
-              <div class="hero-trust-badges">
-                <span class="trust-badge-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Official Store
-                </span>
-                <span class="trust-badge-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Genuine Products
-                </span>
-                <span class="trust-badge-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Serving Kerala
-                </span>
+      <!-- Fullwidth Hero Slider Section -->
+      <section class="hero-slider-fullwidth" id="hero">
+        <div class="hero-slides-wrapper" id="hero-slides-wrapper">
+          <!-- Slide 1: Official Exclusive Store Franchise -->
+          <div class="hero-slide-item active" data-slide="0">
+            <div class="hero-slide-bg hero-slide-bg-1"></div>
+            <div class="hero-slide-overlay"></div>
+            <div class="container hero-slide-container">
+              <div class="hero-content">
+                <div class="hero-tag">
+                  <span class="hero-tag-dot"></span>
+                  <span>Official Exclusive Store Franchise • Kerala</span>
+                </div>
+                <h1 class="hero-title">Discover Genuine Tupperware Products</h1>
+                <div class="hero-ctas">
+                  <a href="#/shop" class="btn btn-primary">
+                    Browse Products
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                  <a href="https://wa.me/919847012345?text=Hi%20Tupperware%20Kerala!%20I%20would%20like%20to%20enquire%20about%20products." target="_blank" class="btn btn-wa hero-wa-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span class="hero-wa-text">Contact on WhatsApp</span>
+                  </a>
+                </div>
+                <div class="hero-trust-badges">
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Official Store Franchise
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Genuine Products Guaranteed
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Serving All Over Kerala
+                  </span>
+                </div>
               </div>
             </div>
-            <div class="hero-visual-card">
-              <iframe 
-                class="hero-video" 
-                src="https://www.youtube.com/embed/Lu08d6baY3k?autoplay=1&mute=1&loop=1&playlist=Lu08d6baY3k&controls=1&modestbranding=1&rel=0" 
-                title="Tupperware multi-purpose containers Keep Tab" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
-              <div class="hero-floating-chip">
-                <div class="chip-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+
+          <!-- Slide 2: Modular Kitchen Storage & Pantry Organizers -->
+          <div class="hero-slide-item" data-slide="1">
+            <div class="hero-slide-bg hero-slide-bg-2"></div>
+            <div class="hero-slide-overlay"></div>
+            <div class="container hero-slide-container">
+              <div class="hero-content">
+                <div class="hero-tag">
+                  <span class="hero-tag-dot"></span>
+                  <span>Modular Kitchen Essentials</span>
                 </div>
-                <div>
-                  <div class="chip-title">100% Genuine Guarantee</div>
-                  <div class="chip-sub">Directly from Authorized Kerala Inventory</div>
+                <h1 class="hero-title">Organize Your Dream Kitchen in Style</h1>
+                <div class="hero-ctas">
+                  <a href="#/shop?category=kitchen" class="btn btn-primary">
+                    Explore Kitchen Storage
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                  <a href="https://wa.me/919847012345?text=Hi!%20I%20want%20to%20know%20more%20about%20Modular%20Kitchen%20Storage%20Sets." target="_blank" class="btn btn-wa hero-wa-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span class="hero-wa-text">Kitchen Consultation</span>
+                  </a>
+                </div>
+                <div class="hero-trust-badges">
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    100% Air-Tight Moisture Seal
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Space-Saving Modular Design
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    BPA-Free Food Grade Material
+                  </span>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: On-The-Go Hydration & Smart Lunch Sets -->
+          <div class="hero-slide-item" data-slide="2">
+            <div class="hero-slide-bg hero-slide-bg-3"></div>
+            <div class="hero-slide-overlay"></div>
+            <div class="container hero-slide-container">
+              <div class="hero-content">
+                <div class="hero-tag">
+                  <span class="hero-tag-dot"></span>
+                  <span>Everyday On-The-Go</span>
+                </div>
+                <h1 class="hero-title">Eco Bottles & Executive Lunch Sets</h1>
+                <div class="hero-ctas">
+                  <a href="#/shop?category=bottles" class="btn btn-primary">
+                    Shop Bottles & Lunch Sets
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                  <a href="https://wa.me/919847012345?text=Hi!%20I%20would%20like%20to%20enquire%20about%20Executive%20Lunch%20Boxes%20and%20Eco%20Bottles." target="_blank" class="btn btn-wa hero-wa-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span class="hero-wa-text">Bulk & Gift Enquiries</span>
+                  </a>
+                </div>
+                <div class="hero-trust-badges">
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Ergonomic & Spill-Proof Design
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Non-Toxic & Reusable
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Ideal for Office, School & Travel
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Premia Borosilicate Glass & Thermals -->
+          <div class="hero-slide-item" data-slide="3">
+            <div class="hero-slide-bg hero-slide-bg-4"></div>
+            <div class="hero-slide-overlay"></div>
+            <div class="container hero-slide-container">
+              <div class="hero-content">
+                <div class="hero-tag">
+                  <span class="hero-tag-dot"></span>
+                  <span>Premium Collection</span>
+                </div>
+                <h1 class="hero-title">Premia Borosilicate Glass & Thermals</h1>
+                <div class="hero-ctas">
+                  <a href="#/product/tup-12" class="btn btn-primary">
+                    View Premia Glass
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                  <a href="#/promotions" class="btn btn-secondary">
+                    View Current Offers
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                  </a>
+                </div>
+                <div class="hero-trust-badges">
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Oven, Microwave & Dishwasher Safe
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    100% Thermal Retention
+                  </span>
+                  <span class="trust-badge-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Smart Clip Leak-Proof Lids
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="hero-slider-nav hero-slider-prev" id="hero-slider-prev" aria-label="Previous Slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="hero-slider-nav hero-slider-next" id="hero-slider-next" aria-label="Next Slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Bottom Slider Controls: Dots Pagination & Counter -->
+        <div class="hero-slider-footer">
+          <div class="container hero-slider-footer-inner">
+            <div class="hero-slider-counter">
+              <span class="counter-current" id="hero-slider-current">01</span>
+              <span class="counter-divider">/</span>
+              <span class="counter-total">04</span>
+            </div>
+
+            <div class="hero-slider-dots" id="hero-slider-dots">
+              <button class="hero-dot active" data-index="0" aria-label="Slide 1"></button>
+              <button class="hero-dot" data-index="1" aria-label="Slide 2"></button>
+              <button class="hero-dot" data-index="2" aria-label="Slide 3"></button>
+              <button class="hero-dot" data-index="3" aria-label="Slide 4"></button>
+            </div>
+
+            <div class="hero-slider-autoplay-status" id="hero-slider-autoplay-indicator" title="Autoplay Active">
+              <span class="progress-bar-fill" id="hero-progress-fill"></span>
             </div>
           </div>
         </div>
@@ -246,15 +375,43 @@ function renderHomeView(container) {
         </div>
       </div>
 
+      <!-- New Shop By Category Grid Section (Just below hero slider) -->
+      <section class="section section-grey section-category-grid" id="shop-by-category">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="section-subtitle">EXPLORE COLLECTIONS</span>
+            <h2 class="section-title">Shop By Category</h2>
+            <p class="section-desc">Browse genuine Tupperware kitchen storage, bottles, lunch boxes, and home essentials.</p>
+          </div>
+
+          <div class="home-category-cards-grid" id="home-category-cards-grid">
+            <!-- Rendered dynamically by renderHomeCategoryCards -->
+          </div>
+        </div>
+      </section>
+
       <!-- Featured Collections spotlight -->
       <section class="section" id="promotions">
         <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle">Special Banners</span>
-            <h2 class="section-title">Featured Highlights</h2>
-            <p class="section-desc">Ongoing limited combos and curated kit promotions for Kerala customers.</p>
+          <div class="section-header-with-nav">
+            <div>
+              <span class="section-subtitle">Special Banners</span>
+              <h2 class="section-title">Featured Highlights</h2>
+              <p class="section-desc">Ongoing limited combos and curated kit promotions for Kerala customers.</p>
+            </div>
+            <div class="promo-slider-controls">
+              <button class="promo-nav-btn prev" id="promo-slider-prev" aria-label="Previous Highlight">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button class="promo-nav-btn next" id="promo-slider-next" aria-label="Next Highlight">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="promo-grid" id="home-promo-grid"></div>
+
+          <div class="promo-slider-wrapper" id="promo-slider-wrapper">
+            <div class="promo-slider-container" id="home-promo-grid"></div>
+          </div>
         </div>
       </section>
 
@@ -437,11 +594,179 @@ function renderHomeView(container) {
 
   // Render components inside Home Layout
   renderHomeCategories();
+  renderHomeCategoryCards();
   renderHomePromotions();
   renderHomeProducts();
   renderHomeWhyUs();
   renderHomeReels();
   renderHomeTestimonials();
+  initHeroSlider();
+}
+
+let heroSliderInterval = null;
+
+function initHeroSlider() {
+  const heroSection = document.getElementById('hero');
+  if (!heroSection) return;
+
+  const slides = heroSection.querySelectorAll('.hero-slide-item');
+  const dots = heroSection.querySelectorAll('.hero-dot');
+  const currentCounter = document.getElementById('hero-slider-current');
+  const prevBtn = document.getElementById('hero-slider-prev');
+  const nextBtn = document.getElementById('hero-slider-next');
+  const progressFill = document.getElementById('hero-progress-fill');
+
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  const slideDuration = 5500; // 5.5s per slide
+
+  function resetProgressBar() {
+    if (!progressFill) return;
+    progressFill.style.transition = 'none';
+    progressFill.style.width = '0%';
+    // Force reflow
+    void progressFill.offsetWidth;
+    progressFill.style.transition = `width ${slideDuration}ms linear`;
+    progressFill.style.width = '100%';
+  }
+
+  function goToSlide(index, isInitial = false) {
+    if (index < 0) {
+      index = slides.length - 1;
+    } else if (index >= slides.length) {
+      index = 0;
+    }
+
+    if (!isInitial && currentIndex === index && slides[index].classList.contains('active')) {
+      return;
+    }
+
+    currentIndex = index;
+
+    slides.forEach((slide, idx) => {
+      if (idx === currentIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    dots.forEach((dot, idx) => {
+      if (idx === currentIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    if (currentCounter) {
+      currentCounter.textContent = String(currentIndex + 1).padStart(2, '0');
+    }
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    resetProgressBar();
+    heroSliderInterval = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, slideDuration);
+  }
+
+  function stopAutoplay() {
+    if (heroSliderInterval) {
+      clearInterval(heroSliderInterval);
+      heroSliderInterval = null;
+    }
+    if (progressFill) {
+      progressFill.style.transition = 'none';
+    }
+  }
+
+  // Event Listeners for Prev/Next
+  if (prevBtn) {
+    prevBtn.onclick = (e) => {
+      e.preventDefault();
+      goToSlide(currentIndex - 1);
+      startAutoplay();
+    };
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = (e) => {
+      e.preventDefault();
+      goToSlide(currentIndex + 1);
+      startAutoplay();
+    };
+  }
+
+  // Dots click handler
+  dots.forEach(dot => {
+    dot.onclick = (e) => {
+      e.preventDefault();
+      const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
+      goToSlide(idx);
+      startAutoplay();
+    };
+  });
+
+  // Pause on hover
+  heroSection.onmouseenter = () => {
+    stopAutoplay();
+  };
+
+  heroSection.onmouseleave = () => {
+    startAutoplay();
+  };
+
+  // Touch Swipe Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  heroSection.ontouchstart = (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  };
+
+  heroSection.ontouchend = (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  };
+
+  function handleSwipe() {
+    const diffX = touchEndX - touchStartX;
+    if (Math.abs(diffX) > 40) {
+      if (diffX < 0) {
+        // Swipe Left -> Next
+        goToSlide(currentIndex + 1);
+      } else {
+        // Swipe Right -> Prev
+        goToSlide(currentIndex - 1);
+      }
+      startAutoplay();
+    }
+  }
+
+  // Keyboard navigation
+  const handleKeydown = (e) => {
+    if (!document.getElementById('hero')) return;
+    if (e.key === 'ArrowLeft') {
+      goToSlide(currentIndex - 1);
+      startAutoplay();
+    } else if (e.key === 'ArrowRight') {
+      goToSlide(currentIndex + 1);
+      startAutoplay();
+    }
+  };
+
+  if (window._heroKeydownHandler) {
+    window.removeEventListener('keydown', window._heroKeydownHandler);
+  }
+  window._heroKeydownHandler = handleKeydown;
+  window.addEventListener('keydown', handleKeydown);
+
+  // Initialize first slide and start autoplay
+  goToSlide(0, true);
+  startAutoplay();
 }
 
 function renderHomeCategories() {
@@ -458,6 +783,22 @@ function renderHomeCategories() {
   `).join('');
 
   setupCategoryCarousel();
+}
+
+function renderHomeCategoryCards() {
+  const container = document.getElementById('home-category-cards-grid');
+  if (!container) return;
+
+  container.innerHTML = CATEGORIES.map(cat => `
+    <a href="#/shop?category=${cat.id}" class="category-card-item" title="Browse ${cat.name}">
+      <div class="category-card-img-wrapper">
+        <img src="${cat.image}" alt="${cat.name}" class="category-card-img" loading="lazy" />
+      </div>
+      <div class="category-card-body">
+        <h3 class="category-card-title">${cat.name}</h3>
+      </div>
+    </a>
+  `).join('');
 }
 
 function setupCategoryCarousel() {
@@ -516,12 +857,15 @@ function setupCategoryCarousel() {
   setTimeout(updateState, 50);
 }
 
+let promoSliderInterval = null;
+
 function renderHomePromotions() {
   const grid = document.getElementById('home-promo-grid');
   if (!grid) return;
   grid.innerHTML = PROMOTIONS.map(promo => `
     <div class="promo-card">
       <img src="${promo.image}" alt="${promo.title}" class="promo-card-bg" loading="lazy" />
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%); z-index: 1;"></div>
       <div class="promo-card-content">
         <span class="promo-tag">${promo.tag}</span>
         <h3 class="promo-title">${promo.title}</h3>
@@ -532,6 +876,65 @@ function renderHomePromotions() {
       </div>
     </div>
   `).join('');
+
+  setupPromotionsSlider();
+}
+
+function setupPromotionsSlider() {
+  const container = document.getElementById('home-promo-grid');
+  const prevBtn = document.getElementById('promo-slider-prev');
+  const nextBtn = document.getElementById('promo-slider-next');
+
+  if (!container) return;
+
+  const slideStep = () => {
+    const card = container.querySelector('.promo-card');
+    const cardWidth = card ? card.offsetWidth : 400;
+    const gap = 24;
+    const scrollAmount = cardWidth + gap;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+
+    if (container.scrollLeft >= maxScroll - 15) {
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const startAutoPlay = () => {
+    stopAutoPlay();
+    promoSliderInterval = setInterval(slideStep, 4000);
+  };
+
+  const stopAutoPlay = () => {
+    if (promoSliderInterval) {
+      clearInterval(promoSliderInterval);
+      promoSliderInterval = null;
+    }
+  };
+
+  if (prevBtn) {
+    prevBtn.onclick = () => {
+      stopAutoPlay();
+      const card = container.querySelector('.promo-card');
+      const cardWidth = card ? card.offsetWidth : 400;
+      container.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
+      startAutoPlay();
+    };
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = () => {
+      stopAutoPlay();
+      slideStep();
+      startAutoPlay();
+    };
+  }
+
+  container.onmouseenter = stopAutoPlay;
+  container.onmouseleave = startAutoPlay;
+
+  startAutoPlay();
 }
 
 function renderHomeProducts() {
@@ -553,24 +956,8 @@ function renderHomeProducts() {
           <button class="quick-view-btn" onclick="openQuickView('${prod.id}')" title="Quick View Specs">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </button>
-        </div>
-
-        <div class="product-body">
-          <div class="product-capacity">${prod.capacity}</div>
-          <h3 class="product-title">
-            <a href="#/product/${prod.id}" title="${prod.name}">${prod.name}</a>
-          </h3>
-          <div class="product-price-rating-row">
-            <div class="product-price">₹${prod.price.toLocaleString('en-IN')}</div>
-            <div class="detail-rating-row">
-              <span class="detail-stars" style="font-size:13px;">★</span>
-              <span class="detail-rating-val">${prod.rating}</span>
-            </div>
-          </div>
-          <p class="product-desc">${prod.shortDesc}</p>
-
-          <div class="product-footer">
-            <button class="add-enquiry-btn ${isInEnquiry ? 'in-enquiry' : ''}" onclick="toggleEnquiryItem('${prod.id}')">
+          <div class="thumb-hover-action-wrapper">
+            <button class="thumb-hover-enquiry-btn ${isInEnquiry ? 'in-enquiry' : ''}" onclick="toggleEnquiryItem('${prod.id}')">
               ${isInEnquiry ? `
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                 In Enquiry List
@@ -579,6 +966,20 @@ function renderHomeProducts() {
                 Add to Enquiry
               `}
             </button>
+          </div>
+        </div>
+
+        <div class="product-body">
+          <div class="product-capacity">${prod.capacity}</div>
+          <h3 class="product-title">
+            <a href="#/product/${prod.id}" title="${prod.name}">${prod.name}</a>
+          </h3>
+          <div class="product-price-rating-row" style="margin-bottom: 0;">
+            <div class="product-price">₹${prod.price.toLocaleString('en-IN')}</div>
+            <div class="detail-rating-row">
+              <span class="detail-stars" style="font-size:13px;">★</span>
+              <span class="detail-rating-val">${prod.rating}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -699,10 +1100,10 @@ function setupReelsCarousel() {
 
 let currentReelModalIndex = 0;
 
-window.openReelModal = function(reelId) {
+window.openReelModal = function (reelId) {
   const index = INSTA_REELS.findIndex(r => r.id === reelId);
   currentReelModalIndex = index > -1 ? index : 0;
-  
+
   const modal = document.getElementById('reel-modal');
   if (modal) {
     modal.classList.add('open');
@@ -710,7 +1111,7 @@ window.openReelModal = function(reelId) {
   }
 };
 
-window.renderReelModalContent = function() {
+window.renderReelModalContent = function () {
   const container = document.getElementById('reel-modal-container');
   if (!container) return;
 
@@ -726,7 +1127,7 @@ window.renderReelModalContent = function() {
   const nextReel = INSTA_REELS[nextIndex];
 
   const activeProd = PRODUCTS.find(p => p.id === activeReel.productId);
-  
+
   // Find other items in the same category for the bottom slider
   const categoryProducts = activeProd
     ? PRODUCTS.filter(p => p.category === activeProd.category)
@@ -791,8 +1192,8 @@ window.renderReelModalContent = function() {
         <div class="reel-bottom-products-slider">
           <div class="reel-bottom-products-track">
             ${categoryProducts.map(p => {
-              const isAdded = enquiryList.some(item => item.id === p.id);
-              return `
+    const isAdded = enquiryList.some(item => item.id === p.id);
+    return `
                 <div class="reel-mini-prod-card">
                   <div class="mini-prod-header" onclick="window.closeReelModal(); window.location.hash='#/product/${p.id}';">
                     <div class="mini-prod-img-wrapper">
@@ -812,7 +1213,7 @@ window.renderReelModalContent = function() {
                   </button>
                 </div>
               `;
-            }).join('')}
+  }).join('')}
           </div>
         </div>
       </div>
@@ -832,7 +1233,7 @@ window.renderReelModalContent = function() {
   `;
 };
 
-window.toggleReelShareMenu = function(reelId) {
+window.toggleReelShareMenu = function (reelId) {
   const menu = document.getElementById(`reel-share-menu-${reelId}`);
   if (menu) {
     const isVisible = menu.style.display === 'flex';
@@ -840,7 +1241,7 @@ window.toggleReelShareMenu = function(reelId) {
   }
 };
 
-window.shareReelWhatsApp = function(reelId) {
+window.shareReelWhatsApp = function (reelId) {
   const reel = INSTA_REELS.find(r => r.id === reelId);
   if (!reel) return;
   const link = encodeURIComponent(`${window.location.origin}/#/product/${reel.productId}`);
@@ -848,7 +1249,7 @@ window.shareReelWhatsApp = function(reelId) {
   window.open(`https://wa.me/?text=${text}${link}`, '_blank');
 };
 
-window.copyReelLink = function(productId) {
+window.copyReelLink = function (productId) {
   const link = `${window.location.origin}/#/product/${productId}`;
   navigator.clipboard.writeText(link).then(() => {
     alert('Product link copied to clipboard!');
@@ -857,18 +1258,18 @@ window.copyReelLink = function(productId) {
   });
 };
 
-window.navigateModalReel = function(direction) {
+window.navigateModalReel = function (direction) {
   const total = INSTA_REELS.length;
   currentReelModalIndex = (currentReelModalIndex + direction + total) % total;
   renderReelModalContent();
 };
 
-window.closeReelModal = function() {
+window.closeReelModal = function () {
   const modal = document.getElementById('reel-modal');
   if (modal) modal.classList.remove('open');
 };
 
-window.closeReelModal = function() {
+window.closeReelModal = function () {
   const modal = document.getElementById('reel-modal');
   if (modal) modal.classList.remove('open');
 };
@@ -1228,24 +1629,8 @@ function filterAndRenderShopProducts() {
           <button class="quick-view-btn" onclick="openQuickView('${prod.id}')" title="Quick View Specs">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </button>
-        </div>
-
-        <div class="product-body">
-          <div class="product-capacity">${prod.capacity}</div>
-          <h3 class="product-title">
-            <a href="#/product/${prod.id}" title="${prod.name}">${prod.name}</a>
-          </h3>
-          <div class="product-price-rating-row">
-            <div class="product-price">₹${prod.price.toLocaleString('en-IN')}</div>
-            <div class="detail-rating-row">
-              <span class="detail-stars" style="font-size:13px;">★</span>
-              <span class="detail-rating-val">${prod.rating}</span>
-            </div>
-          </div>
-          <p class="product-desc">${prod.shortDesc}</p>
-
-          <div class="product-footer">
-            <button class="add-enquiry-btn ${isInEnquiry ? 'in-enquiry' : ''}" onclick="toggleEnquiryItem('${prod.id}')">
+          <div class="thumb-hover-action-wrapper">
+            <button class="thumb-hover-enquiry-btn ${isInEnquiry ? 'in-enquiry' : ''}" onclick="toggleEnquiryItem('${prod.id}')">
               ${isInEnquiry ? `
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                 In Enquiry List
@@ -1254,6 +1639,20 @@ function filterAndRenderShopProducts() {
                 Add to Enquiry
               `}
             </button>
+          </div>
+        </div>
+
+        <div class="product-body">
+          <div class="product-capacity">${prod.capacity}</div>
+          <h3 class="product-title">
+            <a href="#/product/${prod.id}" title="${prod.name}">${prod.name}</a>
+          </h3>
+          <div class="product-price-rating-row" style="margin-bottom: 0;">
+            <div class="product-price">₹${prod.price.toLocaleString('en-IN')}</div>
+            <div class="detail-rating-row">
+              <span class="detail-stars" style="font-size:13px;">★</span>
+              <span class="detail-rating-val">${prod.rating}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1708,7 +2107,7 @@ function sendWhatsAppEnquiry() {
   if (!name || !phone) {
     if (!name && nameInput) nameInput.classList.add('input-error');
     if (!phone && phoneInput) phoneInput.classList.add('input-error');
-    
+
     if (errContainer) {
       errContainer.textContent = 'Please fill in both your Full Name and Mobile/WhatsApp Number.';
       errContainer.style.display = 'block';
@@ -1849,9 +2248,9 @@ function setupGlobalListeners() {
     searchResults.innerHTML = '';
     searchInput.focus();
   };
-  
+
   if (searchTrigger) searchTrigger.addEventListener('click', openSearch);
-  
+
   const bottomBarSearch = document.getElementById('bottom-bar-search');
   if (bottomBarSearch) bottomBarSearch.addEventListener('click', openSearch);
 
@@ -1868,8 +2267,8 @@ function setupGlobalListeners() {
         searchResults.innerHTML = '';
         return;
       }
-      const matches = PRODUCTS.filter(p => 
-        p.name.toLowerCase().includes(q) || 
+      const matches = PRODUCTS.filter(p =>
+        p.name.toLowerCase().includes(q) ||
         p.categoryName.toLowerCase().includes(q) ||
         p.shortDesc.toLowerCase().includes(q)
       );
@@ -2655,19 +3054,3 @@ function renderAboutStoreView(container) {
     </div>
   `;
 }
-
-// Global handler for Consultation topic chip selection
-window.selectConsultationTopic = function(btn, topicName) {
-  const container = btn.closest('.topic-chips');
-  if (container) {
-    container.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('active'));
-  }
-  btn.classList.add('active');
-
-  const waBtn = document.getElementById('consultation-wa-btn');
-  if (waBtn) {
-    const text = encodeURIComponent(`Hello! I need help selecting Tupperware ${topicName} for my home.`);
-    waBtn.href = `https://wa.me/919847012345?text=${text}`;
-  }
-};
-
