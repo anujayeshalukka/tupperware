@@ -575,9 +575,9 @@ img {
   height: 100%;
   z-index: 1;
   background: linear-gradient(90deg,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(255, 255, 255, 0.85) 45%,
-      rgba(255, 255, 255, 0.1) 75%,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(255, 255, 255, 0.70) 45%,
+      rgba(255, 255, 255, 0.08) 75%,
       transparent 100%);
   pointer-events: none;
 }
@@ -1363,6 +1363,12 @@ img {
   transform: scale(1.06);
 }
 
+.promo-nav-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .promo-slider-wrapper {
   position: relative;
   width: 100%;
@@ -1445,7 +1451,7 @@ img {
 
 .promo-subtitle {
   font-size: 14px;
-  color: #ffffff;
+  color: #1d1d1d;
   margin-bottom: 24px;
 }
 
@@ -1690,14 +1696,6 @@ img {
   flex-grow: 1;
 }
 
-.product-capacity {
-  font-size: 10.5px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 4px;
-}
 
 .product-title {
   font-size: 14px;
@@ -1721,7 +1719,7 @@ img {
 }
 
 .product-price {
-  font-size: 16px;
+  font-size: 13.5px;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1;
@@ -1730,7 +1728,7 @@ img {
 .detail-rating-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
 .detail-stars {
@@ -1741,7 +1739,7 @@ img {
 }
 
 .detail-rating-val {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1;
@@ -1964,7 +1962,7 @@ img {
 .site-footer {
   background-color: var(--bg-main);
   border-top: 1px solid var(--border-light);
-  padding: 80px 0 40px 0;
+  padding: 80px 0 20px 0;
 }
 
 .footer-grid {
@@ -2027,7 +2025,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 32px;
+  padding-top: 20px;
   border-top: 1px solid var(--border-light);
   font-size: 13px;
   color: var(--text-muted);
@@ -2965,7 +2963,7 @@ img {
 }
 
 .reel-price {
-  font-size: 16px;
+  font-size: 13.5px;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1;
@@ -3385,8 +3383,7 @@ img {
 .detail-rating-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-
+  gap: 2px;
 }
 
 .detail-stars {
@@ -3395,7 +3392,7 @@ img {
 }
 
 .detail-rating-val {
-  font-size: 13.5px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -3626,12 +3623,9 @@ img {
   }
 
   .product-price {
-    font-size: 16px;
+    font-size: 13.5px;
   }
 
-  .product-capacity {
-    font-size: 10px;
-  }
 
   .cta-banner {
     padding: 34px 20px;

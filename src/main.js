@@ -865,7 +865,7 @@ function renderHomePromotions() {
   grid.innerHTML = PROMOTIONS.map(promo => `
     <div class="promo-card">
       <img src="${promo.image}" alt="${promo.title}" class="promo-card-bg" loading="lazy" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%); z-index: 1;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 60%, transparent 100%); z-index: 1;"></div>
       <div class="promo-card-content">
         <span class="promo-tag">${promo.tag}</span>
         <h3 class="promo-title">${promo.title}</h3>
@@ -887,54 +887,50 @@ function setupPromotionsSlider() {
 
   if (!container) return;
 
-  const slideStep = () => {
-    const card = container.querySelector('.promo-card');
-    const cardWidth = card ? card.offsetWidth : 400;
-    const gap = 24;
-    const scrollAmount = cardWidth + gap;
+  if (promoSliderInterval) {
+    clearInterval(promoSliderInterval);
+    promoSliderInterval = null;
+  }
+
+  const updateNavButtons = () => {
+    if (!prevBtn || !nextBtn) return;
+    const scrollLeft = container.scrollLeft;
     const maxScroll = container.scrollWidth - container.clientWidth;
 
-    if (container.scrollLeft >= maxScroll - 15) {
-      container.scrollTo({ left: 0, behavior: 'smooth' });
+    if (scrollLeft <= 10) {
+      prevBtn.classList.add('disabled');
     } else {
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      prevBtn.classList.remove('disabled');
     }
-  };
 
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    promoSliderInterval = setInterval(slideStep, 4000);
-  };
-
-  const stopAutoPlay = () => {
-    if (promoSliderInterval) {
-      clearInterval(promoSliderInterval);
-      promoSliderInterval = null;
+    if (scrollLeft >= maxScroll - 10) {
+      nextBtn.classList.add('disabled');
+    } else {
+      nextBtn.classList.remove('disabled');
     }
   };
 
   if (prevBtn) {
     prevBtn.onclick = () => {
-      stopAutoPlay();
       const card = container.querySelector('.promo-card');
       const cardWidth = card ? card.offsetWidth : 400;
       container.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
-      startAutoPlay();
     };
   }
 
   if (nextBtn) {
     nextBtn.onclick = () => {
-      stopAutoPlay();
-      slideStep();
-      startAutoPlay();
+      const card = container.querySelector('.promo-card');
+      const cardWidth = card ? card.offsetWidth : 400;
+      container.scrollBy({ left: cardWidth + 24, behavior: 'smooth' });
     };
   }
 
-  container.onmouseenter = stopAutoPlay;
-  container.onmouseleave = startAutoPlay;
-
-  startAutoPlay();
+  container.onscroll = updateNavButtons;
+  container.onmouseenter = null;
+  container.onmouseleave = null;
+  window.addEventListener('resize', updateNavButtons);
+  setTimeout(updateNavButtons, 50);
 }
 
 function renderHomeProducts() {
@@ -970,12 +966,15 @@ function renderHomeProducts() {
         </div>
 
         <div class="product-body">
-          <div class="product-capacity">${prod.capacity}</div>
           <h3 class="product-title">
             <a href="#/product/${prod.id}" title="${prod.name}">${prod.name}</a>
           </h3>
           <div class="product-price-rating-row" style="margin-bottom: 0;">
-            <div class="product-price">₹${prod.price.toLocaleString('en-IN')}</div>
+            <div class="product-price-wrap" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+              <span class="product-price">₹${prod.price.toLocaleString('en-IN')}</span>
+              <span class="reel-price-original">₹${(prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10).toLocaleString('en-IN')}</span>
+              <span class="reel-discount-badge">${prod.discount || Math.round((((prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10) - prod.price) / (prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10)) * 100) + '% OFF'}</span>
+            </div>
             <div class="detail-rating-row">
               <span class="detail-stars" style="font-size:13px;">★</span>
               <span class="detail-rating-val">${prod.rating}</span>
@@ -1643,12 +1642,15 @@ function filterAndRenderShopProducts() {
         </div>
 
         <div class="product-body">
-          <div class="product-capacity">${prod.capacity}</div>
           <h3 class="product-title">
             <a href="#/product/${prod.id}" title="${prod.name}">${prod.name}</a>
           </h3>
           <div class="product-price-rating-row" style="margin-bottom: 0;">
-            <div class="product-price">₹${prod.price.toLocaleString('en-IN')}</div>
+            <div class="product-price-wrap" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+              <span class="product-price">₹${prod.price.toLocaleString('en-IN')}</span>
+              <span class="reel-price-original">₹${(prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10).toLocaleString('en-IN')}</span>
+              <span class="reel-discount-badge">${prod.discount || Math.round((((prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10) - prod.price) / (prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10)) * 100) + '% OFF'}</span>
+            </div>
             <div class="detail-rating-row">
               <span class="detail-stars" style="font-size:13px;">★</span>
               <span class="detail-rating-val">${prod.rating}</span>
@@ -1733,7 +1735,11 @@ function renderProductDetailView(container, prodId) {
                 <span class="detail-rating-val">${prod.rating} / 5.0 (Authorized Rating)</span>
               </div>
 
-              <div class="detail-price">₹${prod.price.toLocaleString('en-IN')}</div>
+              <div class="detail-price-row" style="display: flex; align-items: center; gap: 10px; margin: 12px 0 16px 0;">
+                <span class="detail-price">₹${prod.price.toLocaleString('en-IN')}</span>
+                <span class="reel-price-original" style="font-size: 16px;">₹${(prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10).toLocaleString('en-IN')}</span>
+                <span class="reel-discount-badge" style="font-size: 12px; padding: 3px 8px;">${prod.discount || Math.round((((prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10) - prod.price) / (prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10)) * 100) + '% OFF'}</span>
+              </div>
               <p class="detail-desc">${prod.fullDesc}</p>
 
               <!-- Colors Choice Selection -->
@@ -1906,9 +1912,12 @@ function renderRelatedProducts(currProd) {
         <img src="${prod.image}" alt="${prod.name}" class="product-thumb" />
       </div>
       <div class="product-body" style="padding: 16px;">
-        <div class="product-capacity">${prod.capacity}</div>
         <div class="product-title" style="font-size: 14px; font-weight: 700;">${prod.name}</div>
-        <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-top: 8px;">₹${prod.price.toLocaleString('en-IN')}</div>
+        <div class="product-price-wrap" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 8px;">
+          <span class="product-price">₹${prod.price.toLocaleString('en-IN')}</span>
+          <span class="reel-price-original">₹${(prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10).toLocaleString('en-IN')}</span>
+          <span class="reel-discount-badge">${prod.discount || Math.round((((prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10) - prod.price) / (prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10)) * 100) + '% OFF'}</span>
+        </div>
       </div>
     </div>
   `).join('');
@@ -1934,9 +1943,12 @@ function renderRecentlyViewed(currId) {
         <img src="${prod.image}" alt="${prod.name}" class="product-thumb" />
       </div>
       <div class="product-body" style="padding: 16px;">
-        <div class="product-capacity">${prod.capacity}</div>
         <div class="product-title" style="font-size: 14px; font-weight: 700;">${prod.name}</div>
-        <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-top: 8px;">₹${prod.price.toLocaleString('en-IN')}</div>
+        <div class="product-price-wrap" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 8px;">
+          <span class="product-price">₹${prod.price.toLocaleString('en-IN')}</span>
+          <span class="reel-price-original">₹${(prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10).toLocaleString('en-IN')}</span>
+          <span class="reel-discount-badge">${prod.discount || Math.round((((prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10) - prod.price) / (prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10)) * 100) + '% OFF'}</span>
+        </div>
       </div>
     </div>
   `).join('');
@@ -2284,9 +2296,12 @@ function setupGlobalListeners() {
             <img src="${prod.image}" alt="${prod.name}" class="product-thumb" />
           </div>
           <div class="product-body" style="padding: 12px;">
-            <div class="product-capacity">${prod.capacity}</div>
             <div class="product-title" style="font-size: 14px;">${prod.name}</div>
-            <div style="font-size: 13.5px; font-weight: 700; color: var(--text-primary);">₹${prod.price.toLocaleString('en-IN')}</div>
+            <div class="product-price-wrap" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+              <span class="product-price" style="font-size: 13.5px;">₹${prod.price.toLocaleString('en-IN')}</span>
+              <span class="reel-price-original">₹${(prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10).toLocaleString('en-IN')}</span>
+              <span class="reel-discount-badge">${prod.discount || Math.round((((prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10) - prod.price) / (prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10)) * 100) + '% OFF'}</span>
+            </div>
           </div>
         </div>
       `).join('');
