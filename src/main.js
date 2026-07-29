@@ -1300,14 +1300,21 @@ function renderHomeTestimonials() {
 function renderShopView(container) {
   container.innerHTML = `
     <div class="route-view">
-      <div class="section" style="padding: 48px 0 96px 0;">
+      <!-- Shop Header Banner -->
+      <section class="page-header-banner" style="background-image: url('/images/hero_banner_kitchen.png');">
         <div class="container">
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
             <span>Shop Catalogue</span>
           </div>
+          <h1 class="page-banner-title">Exclusive Tupperware Catalogue</h1>
+          <p class="page-banner-desc">Explore 100% genuine BPA-free kitchenware, airtight dry storages, lunch sets, and premium thermal flasks.</p>
+        </div>
+      </section>
 
+      <div class="section" style="padding: 48px 0 96px 0;">
+        <div class="container">
           <div class="shop-layout">
             <!-- Sidebar Filters -->
             <aside class="shop-sidebar">
@@ -1690,9 +1697,9 @@ function renderProductDetailView(container, prodId) {
 
   container.innerHTML = `
     <div class="route-view">
-      <div class="section" style="padding: 48px 0 96px 0;">
+      <!-- Product Detail Header Banner -->
+      <section class="page-header-banner" style="background-image: url('${prod.image || '/images/hero_banner_glass.png'}');">
         <div class="container">
-          <!-- Navigation Crumb -->
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
@@ -1700,7 +1707,13 @@ function renderProductDetailView(container, prodId) {
             <span>/</span>
             <span>${prod.name}</span>
           </div>
+          <h1 class="page-banner-title">${prod.name}</h1>
+          <p class="page-banner-desc">${prod.categoryName || 'Authentic Tupperware'} • Genuine Factory Guarantee</p>
+        </div>
+      </section>
 
+      <div class="section" style="padding: 48px 0 96px 0;">
+        <div class="container">
           <div class="detail-layout">
             <!-- Left Column: Gallery -->
             <div class="detail-gallery">
@@ -2375,27 +2388,16 @@ function setupGlobalListeners() {
 function renderContactView(container) {
   container.innerHTML = `
     <div class="route-view contact-page-view">
-      <!-- Breadcrumb Bar -->
-      <div class="breadcrumb-nav">
+      <!-- Contact Page Header Banner -->
+      <section class="page-header-banner" style="background-image: url('/images/hero_banner_store4.jpg');">
         <div class="container">
-          <div class="breadcrumb-links">
+          <div class="breadcrumb">
             <a href="#/">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">Contact Us</span>
+            <span>/</span>
+            <span>Contact Us</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Contact Page Hero Header -->
-      <section class="contact-hero-section">
-        <div class="container">
-          <div class="contact-hero-header">
-            <div class="section-subtitle">Official Franchise • Kerala</div>
-            <h1 class="section-title">Get in Touch with Our Exclusive Store</h1>
-            <p class="section-desc">
-              Have questions about product availability, custom modular kitchen storage planning, bulk corporate orders, or warranty claims? Send us an enquiry below or chat directly with our store team.
-            </p>
-          </div>
+          <h1 class="page-banner-title">Get in Touch with Our Exclusive Store</h1>
+          <p class="page-banner-desc">Have questions about product availability, modular kitchen planning, bulk corporate orders, or warranty claims? Send us an enquiry below or chat directly with our store team.</p>
         </div>
       </section>
 
@@ -2712,27 +2714,16 @@ function setupContactFormEvents() {
 function renderAboutView(container) {
   container.innerHTML = `
     <div class="route-view about-page-view">
-      <!-- Breadcrumb Bar -->
-      <div class="breadcrumb-nav">
+      <!-- About Page Header Banner -->
+      <section class="page-header-banner" style="background-image: url('/images/hero_banner_store.webp');">
         <div class="container">
-          <div class="breadcrumb-links">
+          <div class="breadcrumb">
             <a href="#/">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">About Us</span>
+            <span>/</span>
+            <span>About Us</span>
           </div>
-        </div>
-      </div>
-
-      <!-- About Page Hero Header -->
-      <section class="about-hero-section">
-        <div class="container">
-          <div class="about-hero-header">
-            <div class="section-subtitle">Official Exclusive Store • Kerala</div>
-            <h1 class="section-title">Bringing Authentic Tupperware Excellence to Every Kerala Home</h1>
-            <p class="section-desc">
-              For over two decades, our authorized exclusive store franchise in Kerala has been dedicated to providing genuine 100% BPA-free food storage, kitchen organization, and premium thermal products backed by Tupperware's legendary quality assurance.
-            </p>
-          </div>
+          <h1 class="page-banner-title">Authentic Tupperware Excellence</h1>
+          <p class="page-banner-desc">For over two decades, our authorized exclusive store franchise in Kerala has been dedicated to providing genuine 100% BPA-free food storage, kitchen organization, and premium thermal products.</p>
         </div>
       </section>
 
@@ -2798,6 +2789,35 @@ function renderAboutView(container) {
       </section>
 
 
+      <!-- Customer Testimonials Section -->
+      <section class="section section-grey" id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">Customer Reviews</span>
+            <h2 class="section-title">Loved by Families Across Kerala</h2>
+            <p class="section-desc">Read genuine feedback from doctors, professionals, and homemakers who rely on our products daily.</p>
+          </div>
+
+          <div class="testimonial-grid">
+            ${TESTIMONIALS.map(t => `
+              <div class="testimonial-card">
+                <div>
+                  <div class="testimonial-stars">★★★★★</div>
+                  <p class="testimonial-text">"${t.text}"</p>
+                </div>
+                <div class="testimonial-author">
+                  <img src="${t.avatar}" alt="${t.name}" class="author-avatar" loading="lazy" />
+                  <div>
+                    <div class="author-name">${t.name}</div>
+                    <div class="author-role">${t.role} • ${t.location}</div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+
       <!-- CTA Banner to Products -->
       <section class="section">
         <div class="container">
@@ -2823,30 +2843,16 @@ function renderAboutView(container) {
 function renderPromotionsView(container) {
   container.innerHTML = `
     <div class="route-view promo-page-view">
-      <!-- Breadcrumb Bar -->
-      <div class="breadcrumb-nav">
+      <!-- Promotions Page Header Banner -->
+      <section class="page-header-banner" style="background-image: url('/images/hero_banner_glass.png');">
         <div class="container">
-          <div class="breadcrumb-links">
+          <div class="breadcrumb">
             <a href="#/">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">Promotions & Special Offers</span>
+            <span>/</span>
+            <span>Promotions & Special Offers</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Promotions Hero Banner -->
-      <section class="promo-hero-section">
-        <div class="container">
-          <div class="promo-hero-header">
-            <div class="hero-tag" style="margin: 0 auto 16px auto;">
-              <span class="hero-tag-dot"></span>
-              <span>Limited Time Exclusive Offers • Kerala Franchise</span>
-            </div>
-            <h1 class="section-title">Special Offers & Featured Combos</h1>
-            <p class="section-desc">
-              Discover exclusive seasonal deals, discounted kitchen storage bundles, and best-seller hydration combos available for instant WhatsApp enquiry and home delivery across Kerala.
-            </p>
-          </div>
+          <h1 class="page-banner-title">Special Offers & Featured Combos</h1>
+          <p class="page-banner-desc">Discover exclusive seasonal deals, discounted kitchen storage bundles, and best-seller hydration combos available across Kerala.</p>
         </div>
       </section>
 
@@ -2863,15 +2869,15 @@ function renderPromotionsView(container) {
             ${PROMOTIONS.map(p => `
               <div class="promo-card">
                 <div class="promo-card-content">
-                  <span class="promo-tag-badge">${p.tag}</span>
-                  <h3 class="promo-card-title">${p.title}</h3>
-                  <p class="promo-card-sub">${p.subtitle}</p>
+                  <span class="promo-tag">${p.tag}</span>
+                  <h3 class="promo-title">${p.title}</h3>
+                  <p class="promo-subtitle">${p.subtitle}</p>
                   
                   <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
                     <a href="#/shop?category=${p.category}" class="btn btn-primary btn-sm">
                       ${p.cta}
                     </a>
-                    <a href="https://wa.me/919847012345?text=Hi!%20I%20want%20to%20enquire%20about%20the%20${encodeURIComponent(p.title)}%20offer." target="_blank" class="btn btn-wa btn-sm">
+                    <a href="https://wa.me/919847012345?text=Hi!%20I%20want%20to%20enquire%20about%20the%20${encodeURIComponent(p.title)}%20offer." target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-sm">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                       Enquire Offer on WA
                     </a>
@@ -2899,21 +2905,36 @@ function renderPromotionsView(container) {
             </button>
 
             <div class="reels-scroll-container" id="reels-scroll-container">
-              ${INSTA_REELS.map((reel, idx) => `
-                <div class="reel-card" onclick="openReelModal(${idx})">
-                  <div class="reel-thumbnail-box">
-                    <img src="${reel.image}" alt="${reel.title}" class="reel-thumb-img" />
-                    <div class="reel-play-overlay">
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              ${INSTA_REELS.map(reel => `
+                <div class="reel-card">
+                  <div class="reel-thumb-wrapper" onclick="openReelModal('${reel.id}')" role="button" tabindex="0">
+                    <img src="${reel.image}" alt="${reel.title}" class="reel-thumb-img" loading="lazy" />
+                    <div class="reel-overlay-gradient"></div>
+                    
+                    <div class="reel-play-btn" title="Play Video Reel">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     </div>
-                    <div class="reel-duration-badge">${reel.duration}</div>
+                    
+                    <div class="reel-meta-top">
+                      <span class="reel-badge-insta">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        Instagram Reel
+                      </span>
+                    </div>
+
+                    <div class="reel-meta-bottom">
+                      <span>▶ ${reel.views}</span>
+                      <span>${reel.duration}</span>
+                    </div>
                   </div>
-                  <div class="reel-info">
-                    <div class="reel-views">${reel.views}</div>
-                    <div class="reel-title">${reel.title}</div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                      <span style="font-weight:700; font-size:14px; color:var(--text-primary);">₹${reel.price.toLocaleString('en-IN')}</span>
-                      <span style="font-size:11px; font-weight:700; color:var(--accent-wa); background:#e8f9ee; padding:2px 6px; border-radius:4px;">${reel.discount}</span>
+
+                  <div class="reel-card-body">
+                    <h4 class="reel-product-title" title="${reel.title}">${reel.productName || reel.title}</h4>
+                    
+                    <div class="reel-price-row">
+                      <span class="reel-price">₹${reel.price.toLocaleString('en-IN')}</span>
+                      ${reel.originalPrice ? `<span class="reel-price-original">₹${reel.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+                      ${reel.discount ? `<span class="reel-discount-badge">${reel.discount}</span>` : ''}
                     </div>
                   </div>
                 </div>
@@ -2930,15 +2951,21 @@ function renderPromotionsView(container) {
       <!-- Franchise Guarantee Banner -->
       <section class="section section-grey">
         <div class="container">
-          <div style="background: #ffffff; border-radius: var(--radius-xl); padding: 36px; border: 1px solid var(--border-light); text-align: center; max-width: 840px; margin: 0 auto; box-shadow: var(--shadow-subtle);">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px;">Looking for Custom Bulk or Corporate Gift Sets?</h3>
-            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
-              We offer special wholesale and corporate gifting discounts for festivals, office events, and family functions across Kerala. Get a personalized invoice and custom product combo quote within 15 minutes on WhatsApp.
-            </p>
-            <a href="https://wa.me/919847012345?text=Hello%20Tupperware%20Kerala!%20I%20have%20a%20bulk%20/%20corporate%20order%20enquiry." target="_blank" rel="noopener noreferrer" class="btn btn-wa">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              Request Custom Bulk Quote on WhatsApp
-            </a>
+          <div class="minimal-quote-banner">
+            <div class="minimal-quote-content">
+              <span class="minimal-quote-tag">Wholesale & Corporate Gifting</span>
+              <h3 class="minimal-quote-title">Looking for Custom Bulk Sets?</h3>
+              <p class="minimal-quote-desc">
+                We offer special wholesale and corporate gifting discounts for festivals, office events, and family functions across Kerala. Get a personalized invoice and custom product combo quote within 15 minutes on WhatsApp.
+              </p>
+              <a href="https://wa.me/919847012345?text=Hello%20Tupperware%20Kerala!%20I%20have%20a%20bulk%20/%20corporate%20order%20enquiry." target="_blank" rel="noopener noreferrer" class="btn-minimal-wa">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                Request Custom Bulk Quote on WhatsApp
+              </a>
+            </div>
+            <div class="minimal-quote-image-wrapper">
+              <img src="/images/consultation_tupperware.png" alt="Tupperware Bulk Gifting Sets" class="minimal-quote-img" loading="lazy" />
+            </div>
           </div>
         </div>
       </section>
@@ -2946,7 +2973,7 @@ function renderPromotionsView(container) {
   `;
 
   setTimeout(() => {
-    initReelsCarousel();
+    setupReelsCarousel();
   }, 50);
 }
 
@@ -2956,25 +2983,16 @@ function renderPromotionsView(container) {
 function renderAboutStoreView(container) {
   container.innerHTML = `
     <div class="route-view about-page-view">
-      <div class="breadcrumb-nav">
+      <!-- About Store Page Header Banner -->
+      <section class="page-header-banner" style="background-image: url('/images/hero_banner_store1.png');">
         <div class="container">
-          <div class="breadcrumb-links">
+          <div class="breadcrumb">
             <a href="#/">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">About Tupstore</span>
+            <span>/</span>
+            <span>About Tupstore</span>
           </div>
-        </div>
-      </div>
-
-      <section class="about-hero-section">
-        <div class="container">
-          <div class="about-hero-header">
-            <div class="section-subtitle">Tupstore • Thiruvalla, Pathanamthitta</div>
-            <h1 class="section-title">Your Local Destination for Authentic Tupperware</h1>
-            <p class="section-desc">
-              Welcome to Tupstore, your authorized Tupperware exclusive store located in the heart of Thiruvalla, Pathanamthitta, Kerala. We bring the world's most trusted kitchen solutions right to your neighborhood.
-            </p>
-          </div>
+          <h1 class="page-banner-title">Your Authorized Exclusive Store</h1>
+          <p class="page-banner-desc">Welcome to Tupstore located in Thiruvalla, Pathanamthitta, Kerala — bringing the world's most trusted kitchen solutions right to your neighborhood.</p>
         </div>
       </section>
 
@@ -3019,7 +3037,7 @@ function renderAboutStoreView(container) {
       </section>
 
       <!-- Customer Testimonials Section -->
-      <section class="section">
+      <section class="section" id="testimonials">
         <div class="container">
           <div class="section-header">
             <span class="section-subtitle">Customer Reviews</span>
@@ -3030,13 +3048,15 @@ function renderAboutStoreView(container) {
           <div class="testimonial-grid">
             ${TESTIMONIALS.map(t => `
               <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"${t.text}"</p>
-                <div class="testimonial-user">
-                  <img src="${t.avatar}" alt="${t.name}" class="testimonial-avatar" />
+                <div>
+                  <div class="testimonial-stars">★★★★★</div>
+                  <p class="testimonial-text">"${t.text}"</p>
+                </div>
+                <div class="testimonial-author">
+                  <img src="${t.avatar}" alt="${t.name}" class="author-avatar" loading="lazy" />
                   <div>
-                    <div class="testimonial-name">${t.name}</div>
-                    <div class="testimonial-location">${t.role} • ${t.location}</div>
+                    <div class="author-name">${t.name}</div>
+                    <div class="author-role">${t.role} • ${t.location}</div>
                   </div>
                 </div>
               </div>
