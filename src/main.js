@@ -136,24 +136,7 @@ function updateActiveNavLink(hash) {
 function renderHomeView(container) {
   container.innerHTML = `
     <div class="route-view">
-      <!-- Category Circular Horizontal Navigation (Directly below main header nav) -->
-      <section class="category-nav-bar" id="categories">
-        <div class="container">
-          <div class="category-carousel-wrapper">
-            <button class="carousel-nav-btn prev" id="cat-carousel-prev" aria-label="Previous Categories">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
 
-            <div class="category-scroll-container" id="category-scroll-container">
-              <!-- Rendered dynamically by renderHomeCategories -->
-            </div>
-
-            <button class="carousel-nav-btn next" id="cat-carousel-next" aria-label="Next Categories">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-          </div>
-        </div>
-      </section>
 
       <!-- Fullwidth Hero Slider Section -->
       <section class="hero-slider-fullwidth" id="hero">
@@ -346,50 +329,6 @@ function renderHomeView(container) {
         </div>
       </section>
 
-      <!-- Feature Ticker -->
-      <div class="feature-ticker">
-        <div class="ticker-content">
-          <span>✨ 100% Genuine Products</span>
-          <span class="ticker-dot">•</span>
-          <span>🚚 Kerala-wide Delivery</span>
-          <span class="ticker-dot">•</span>
-          <span>🛡️ Lifetime Warranty on Plastics</span>
-          <span class="ticker-dot">•</span>
-          <span>💯 Authorized Tupperware Dealer</span>
-          <span class="ticker-dot">•</span>
-          <span>✨ 100% Genuine Products</span>
-          <span class="ticker-dot">•</span>
-          <span>🚚 Kerala-wide Delivery</span>
-          <span class="ticker-dot">•</span>
-          <span>🛡️ Lifetime Warranty on Plastics</span>
-          <span class="ticker-dot">•</span>
-          <span>💯 Authorized Tupperware Dealer</span>
-          <span class="ticker-dot">•</span>
-          <span>✨ 100% Genuine Products</span>
-          <span class="ticker-dot">•</span>
-          <span>🚚 Kerala-wide Delivery</span>
-          <span class="ticker-dot">•</span>
-          <span>🛡️ Lifetime Warranty on Plastics</span>
-          <span class="ticker-dot">•</span>
-          <span>💯 Authorized Tupperware Dealer</span>
-        </div>
-      </div>
-
-      <!-- New Shop By Category Grid Section (Just below hero slider) -->
-      <section class="section section-grey section-category-grid" id="shop-by-category">
-        <div class="container">
-          <div class="section-header text-center">
-            <span class="section-subtitle">EXPLORE COLLECTIONS</span>
-            <h2 class="section-title">Shop By Category</h2>
-            <p class="section-desc">Browse genuine Tupperware kitchen storage, bottles, lunch boxes, and home essentials.</p>
-          </div>
-
-          <div class="home-category-cards-grid" id="home-category-cards-grid">
-            <!-- Rendered dynamically by renderHomeCategoryCards -->
-          </div>
-        </div>
-      </section>
-
       <!-- Featured Collections spotlight -->
       <section class="section" id="promotions">
         <div class="container">
@@ -411,24 +350,6 @@ function renderHomeView(container) {
 
           <div class="promo-slider-wrapper" id="promo-slider-wrapper">
             <div class="promo-slider-container" id="home-promo-grid"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Featured Product Grid (Limit 8) -->
-      <section class="section section-grey" id="featured-products">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle">Handpicked Products</span>
-            <h2 class="section-title">Best Selling Classics</h2>
-            <p class="section-desc">View our most popular genuine kitchen storage sets with clear pricing.</p>
-          </div>
-          <div class="product-grid" id="home-products-grid"></div>
-          <div style="text-align: center; margin-top: 56px;">
-            <a href="#/shop" class="btn btn-secondary">
-              View All Products
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
           </div>
         </div>
       </section>
@@ -593,10 +514,7 @@ function renderHomeView(container) {
   `;
 
   // Render components inside Home Layout
-  renderHomeCategories();
-  renderHomeCategoryCards();
   renderHomePromotions();
-  renderHomeProducts();
   renderHomeWhyUs();
   renderHomeReels();
   renderHomeTestimonials();
@@ -769,94 +687,6 @@ function initHeroSlider() {
   startAutoplay();
 }
 
-function renderHomeCategories() {
-  const container = document.getElementById('category-scroll-container');
-  if (!container) return;
-
-  container.innerHTML = CATEGORIES.map(cat => `
-    <div class="category-circle-item" onclick="window.location.hash = '#/shop?category=${cat.id}'" role="button" tabindex="0">
-      <div class="category-circle-avatar">
-        <img src="${cat.image}" alt="${cat.name}" class="category-circle-img" loading="lazy" />
-      </div>
-      <span class="category-circle-name">${cat.name}</span>
-    </div>
-  `).join('');
-
-  setupCategoryCarousel();
-}
-
-function renderHomeCategoryCards() {
-  const container = document.getElementById('home-category-cards-grid');
-  if (!container) return;
-
-  container.innerHTML = CATEGORIES.map(cat => `
-    <a href="#/shop?category=${cat.id}" class="category-card-item" title="Browse ${cat.name}">
-      <div class="category-card-img-wrapper">
-        <img src="${cat.image}" alt="${cat.name}" class="category-card-img" loading="lazy" />
-      </div>
-      <div class="category-card-body">
-        <h3 class="category-card-title">${cat.name}</h3>
-      </div>
-    </a>
-  `).join('');
-}
-
-function setupCategoryCarousel() {
-  const container = document.getElementById('category-scroll-container');
-  const prevBtn = document.getElementById('cat-carousel-prev');
-  const nextBtn = document.getElementById('cat-carousel-next');
-  const wrapper = container?.closest('.category-carousel-wrapper');
-
-  if (!container || !prevBtn || !nextBtn) return;
-
-  const updateState = () => {
-    // Check if total content fits within container viewport
-    const isOverflowing = container.scrollWidth > container.clientWidth + 5;
-
-    if (!isOverflowing) {
-      // Content fits: remove arrows and distribute items equally across the full container
-      if (wrapper) wrapper.classList.add('is-fitting');
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
-    } else {
-      // Content overflows: show scroll arrows and enable horizontal scroll
-      if (wrapper) wrapper.classList.remove('is-fitting');
-      prevBtn.style.display = 'flex';
-      nextBtn.style.display = 'flex';
-
-      const scrollLeft = container.scrollLeft;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      if (scrollLeft <= 10) {
-        prevBtn.classList.add('disabled');
-      } else {
-        prevBtn.classList.remove('disabled');
-      }
-
-      if (scrollLeft >= maxScroll - 10) {
-        nextBtn.classList.add('disabled');
-      } else {
-        nextBtn.classList.remove('disabled');
-      }
-    }
-  };
-
-  prevBtn.onclick = () => {
-    const scrollAmount = container.clientWidth * 0.7;
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  };
-
-  nextBtn.onclick = () => {
-    const scrollAmount = container.clientWidth * 0.7;
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  };
-
-  container.onscroll = updateState;
-  window.onresize = updateState;
-  // Initialize state
-  setTimeout(updateState, 50);
-}
-
 let promoSliderInterval = null;
 
 function renderHomePromotions() {
@@ -931,59 +761,6 @@ function setupPromotionsSlider() {
   container.onmouseleave = null;
   window.addEventListener('resize', updateNavButtons);
   setTimeout(updateNavButtons, 50);
-}
-
-function renderHomeProducts() {
-  const grid = document.getElementById('home-products-grid');
-  if (!grid) return;
-
-  // Limit to 10 premium products
-  const featured = PRODUCTS.slice(0, 10);
-
-  grid.innerHTML = featured.map(prod => {
-    const isInEnquiry = enquiryList.some(item => item.id === prod.id);
-    return `
-      <div class="product-card">
-        <div class="product-thumb-wrapper">
-          <span class="product-badge">${prod.badge}</span>
-          <a href="#/product/${prod.id}">
-            <img src="${prod.image}" alt="${prod.name}" class="product-thumb" loading="lazy" />
-          </a>
-          <button class="quick-view-btn" onclick="openQuickView('${prod.id}')" title="Quick View Specs">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </button>
-          <div class="thumb-hover-action-wrapper">
-            <button class="thumb-hover-enquiry-btn ${isInEnquiry ? 'in-enquiry' : ''}" onclick="toggleEnquiryItem('${prod.id}')">
-              ${isInEnquiry ? `
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                In Enquiry List
-              ` : `
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                Add to Enquiry
-              `}
-            </button>
-          </div>
-        </div>
-
-        <div class="product-body">
-          <h3 class="product-title">
-            <a href="#/product/${prod.id}" title="${prod.name}">${prod.name}</a>
-          </h3>
-          <div class="product-price-rating-row" style="margin-bottom: 0;">
-            <div class="product-price-wrap" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-              <span class="product-price">₹${prod.price.toLocaleString('en-IN')}</span>
-              <span class="reel-price-original">₹${(prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10).toLocaleString('en-IN')}</span>
-              <span class="reel-discount-badge">${prod.discount || Math.round((((prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10) - prod.price) / (prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10)) * 100) + '% OFF'}</span>
-            </div>
-            <div class="detail-rating-row">
-              <span class="detail-stars" style="font-size:13px;">★</span>
-              <span class="detail-rating-val">${prod.rating}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('');
 }
 
 function renderHomeWhyUs() {
@@ -1997,9 +1774,7 @@ window.toggleEnquiryItem = (prodId) => {
 
   // Re-render current page grids so states display updated checkmarks
   const hash = window.location.hash || '#/';
-  if (hash === '#/' || hash === '') {
-    renderHomeProducts();
-  } else if (hash.startsWith('#/shop')) {
+  if (hash.startsWith('#/shop')) {
     filterAndRenderShopProducts();
   }
 };
@@ -2016,9 +1791,7 @@ window.updateQty = (prodId, delta) => {
 
     // Rerender grids
     const hash = window.location.hash || '#/';
-    if (hash === '#/' || hash === '') {
-      renderHomeProducts();
-    } else if (hash.startsWith('#/shop')) {
+    if (hash.startsWith('#/shop')) {
       filterAndRenderShopProducts();
     }
   }
@@ -2031,9 +1804,7 @@ window.removeEnquiryItem = (prodId) => {
 
   // Rerender grids
   const hash = window.location.hash || '#/';
-  if (hash === '#/' || hash === '') {
-    renderHomeProducts();
-  } else if (hash.startsWith('#/shop')) {
+  if (hash.startsWith('#/shop')) {
     filterAndRenderShopProducts();
   }
 };
@@ -2244,10 +2015,7 @@ function setupGlobalListeners() {
         updateEnquiryUI();
 
         // Rerender grids
-        const hash = window.location.hash || '#/';
-        if (hash === '#/' || hash === '') {
-          renderHomeProducts();
-        } else if (hash.startsWith('#/shop')) {
+        if (hash.startsWith('#/shop')) {
           filterAndRenderShopProducts();
         }
       }
