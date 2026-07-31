@@ -274,9 +274,9 @@ function renderHomeView(container) {
                     View Premia Glass
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                   </a>
-                  <a href="#/promotions" class="btn btn-secondary">
-                    View Current Offers
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                  <a href="https://wa.me/919847012345?text=Hi!%20I%20want%20to%20enquire%20about%20Premia%20Borosilicate%20Glass%20%26%20Thermals." target="_blank" class="btn btn-wa hero-wa-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span class="hero-wa-text">Glassware Enquiries</span>
                   </a>
                 </div>
                 <div class="hero-trust-badges">
