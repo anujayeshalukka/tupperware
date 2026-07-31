@@ -882,13 +882,14 @@ img {
   margin-top: 24px;
 }
 
-.trust-badge-item {
+.trust-badge-item,
+.hero-trust-badges > span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 13.5px;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-weight: 600;
+  color: #111111;
 }
 
 .trust-badge-item svg {
