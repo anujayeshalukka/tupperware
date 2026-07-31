@@ -695,7 +695,7 @@ function renderHomePromotions() {
   grid.innerHTML = PROMOTIONS.map(promo => `
     <div class="promo-card">
       <img src="${promo.image}" alt="${promo.title}" class="promo-card-bg" loading="lazy" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 60%, transparent 100%); z-index: 1;"></div>
+      <div class="promo-card-gradient-overlay"></div>
       <div class="promo-card-content">
         <span class="promo-tag">${promo.tag}</span>
         <h3 class="promo-title">${promo.title}</h3>
@@ -2636,6 +2636,8 @@ function renderPromotionsView(container) {
           <div class="promo-grid">
             ${PROMOTIONS.map(p => `
               <div class="promo-card">
+                <img src="${p.image}" alt="${p.title}" class="promo-card-bg" />
+                <div class="promo-card-gradient-overlay"></div>
                 <div class="promo-card-content">
                   <span class="promo-tag">${p.tag}</span>
                   <h3 class="promo-title">${p.title}</h3>
@@ -2651,7 +2653,6 @@ function renderPromotionsView(container) {
                     </a>
                   </div>
                 </div>
-                <img src="${p.image}" alt="${p.title}" class="promo-card-bg" style="opacity: 0.95;" />
               </div>
             `).join('')}
           </div>
