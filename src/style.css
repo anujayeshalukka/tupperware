@@ -799,11 +799,11 @@ img {
   }
 
   .hero-slide-overlay {
-    width: 100%;
+    width: 80%;
     background: linear-gradient(90deg,
-        rgba(255, 255, 255, 0.96) 0%,
-        rgba(255, 255, 255, 0.88) 55%,
-        rgba(255, 255, 255, 0.5) 80%,
+        rgba(255, 255, 255, 0.92) 0%,
+        rgba(255, 255, 255, 0.55) 25%,
+        rgba(255, 255, 255, 0.10) 60%,
         transparent 100%);
   }
 
