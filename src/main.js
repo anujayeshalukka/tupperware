@@ -329,6 +329,25 @@ function renderHomeView(container) {
         </div>
       </section>
 
+      <!-- Category Circular Horizontal Navigation Section -->
+      <section class="category-nav-bar" id="categories">
+        <div class="container">
+          <div class="category-carousel-wrapper">
+            <button class="carousel-nav-btn prev" id="cat-carousel-prev" aria-label="Previous Categories">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div class="category-scroll-container" id="category-scroll-container">
+              <!-- Rendered dynamically by main.js -->
+            </div>
+
+            <button class="carousel-nav-btn next" id="cat-carousel-next" aria-label="Next Categories">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- Featured Collections spotlight -->
       <section class="section" id="promotions">
         <div class="container">
@@ -514,11 +533,84 @@ function renderHomeView(container) {
   `;
 
   // Render components inside Home Layout
+  renderHomeCategories();
   renderHomePromotions();
   renderHomeWhyUs();
   renderHomeReels();
   renderHomeTestimonials();
   initHeroSlider();
+}
+
+function renderHomeCategories() {
+  const container = document.getElementById('category-scroll-container');
+  if (!container) return;
+
+  container.innerHTML = CATEGORIES.map(cat => `
+    <div class="category-circle-item" onclick="window.location.hash = '#/shop?category=${cat.id}'" role="button" tabindex="0">
+      <div class="category-circle-avatar">
+        <img src="${cat.image}" alt="${cat.name}" class="category-circle-img" loading="lazy" />
+      </div>
+      <span class="category-circle-name">${cat.name}</span>
+    </div>
+  `).join('');
+
+  setupCategoryCarousel();
+}
+
+function setupCategoryCarousel() {
+  const container = document.getElementById('category-scroll-container');
+  const prevBtn = document.getElementById('cat-carousel-prev');
+  const nextBtn = document.getElementById('cat-carousel-next');
+  const wrapper = container?.closest('.category-carousel-wrapper');
+
+  if (!container || !prevBtn || !nextBtn) return;
+
+  const updateState = () => {
+    // Check if total content fits within container viewport
+    const isOverflowing = container.scrollWidth > container.clientWidth + 5;
+
+    if (!isOverflowing) {
+      // Content fits: remove arrows and distribute items equally across the full container
+      if (wrapper) wrapper.classList.add('is-fitting');
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+    } else {
+      // Content overflows: show scroll arrows and enable horizontal scroll
+      if (wrapper) wrapper.classList.remove('is-fitting');
+      prevBtn.style.display = 'flex';
+      nextBtn.style.display = 'flex';
+
+      const scrollLeft = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      if (scrollLeft <= 10) {
+        prevBtn.classList.add('disabled');
+      } else {
+        prevBtn.classList.remove('disabled');
+      }
+
+      if (scrollLeft >= maxScroll - 10) {
+        nextBtn.classList.add('disabled');
+      } else {
+        nextBtn.classList.remove('disabled');
+      }
+    }
+  };
+
+  prevBtn.onclick = () => {
+    const scrollAmount = container.clientWidth * 0.7;
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  };
+
+  nextBtn.onclick = () => {
+    const scrollAmount = container.clientWidth * 0.7;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  container.onscroll = updateState;
+  window.onresize = updateState;
+  // Initialize state
+  setTimeout(updateState, 50);
 }
 
 let heroSliderInterval = null;
