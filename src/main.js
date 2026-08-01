@@ -192,7 +192,7 @@ function renderHomeView(container) {
                 </div>
                 <h1 class="hero-title">Organize Your Dream Kitchen in Style</h1>
                 <div class="hero-ctas">
-                  <a href="#/shop?category=kitchen" class="btn btn-primary">
+                  <a href="#/shop" class="btn btn-primary">
                     Explore Kitchen Storage
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                   </a>
@@ -231,7 +231,7 @@ function renderHomeView(container) {
                 </div>
                 <h1 class="hero-title">Eco Bottles & Executive Lunch Sets</h1>
                 <div class="hero-ctas">
-                  <a href="#/shop?category=bottles" class="btn btn-primary">
+                  <a href="#/shop" class="btn btn-primary">
                     Shop Bottles & Lunch Sets
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                   </a>
@@ -270,7 +270,7 @@ function renderHomeView(container) {
                 </div>
                 <h1 class="hero-title">Premia Borosilicate Glass & Thermals</h1>
                 <div class="hero-ctas">
-                  <a href="#/product/tup-12" class="btn btn-primary">
+                  <a href="#/shop" class="btn btn-primary">
                     View Premia Glass
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                   </a>
@@ -300,10 +300,10 @@ function renderHomeView(container) {
 
         <!-- Navigation Arrows -->
         <button class="hero-slider-nav hero-slider-prev" id="hero-slider-prev" aria-label="Previous Slide">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <button class="hero-slider-nav hero-slider-next" id="hero-slider-next" aria-label="Next Slide">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
 
         <!-- Bottom Slider Controls: Dots Pagination & Counter -->

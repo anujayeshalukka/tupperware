@@ -117,7 +117,6 @@ img {
 
 .section-header {
   text-align: center;
-  max-width: 680px;
   margin: 0 auto 56px auto;
 }
 
@@ -290,22 +289,36 @@ img {
   gap: 12px;
 }
 
+.header-icon-group {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.header-icon-group .icon-btn {
+  width: 28px;
+  height: 36px;
+}
+
 .icon-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-full);
-  background-color: var(--bg-subtle);
+  background-color: transparent;
   color: var(--text-primary);
   transition: all var(--transition-fast);
   position: relative;
+  border: none;
 }
 
 .icon-btn:hover {
-  background-color: #e5e5ea;
-  transform: scale(1.05);
+  background-color: transparent;
+  color: var(--text-primary);
+  opacity: 0.7;
+  transform: scale(1.08);
 }
 
 .icon-btn-wa {
@@ -316,6 +329,21 @@ img {
 .icon-btn-wa:hover {
   background-color: var(--accent-wa-hover);
   color: #ffffff;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.icon-btn-fb,
+.icon-btn-insta {
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.icon-btn-fb:hover,
+.icon-btn-insta:hover {
+  background-color: transparent;
+  color: var(--text-primary);
+  opacity: 0.7;
 }
 
 .enquiry-badge-btn {
@@ -323,8 +351,8 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-full);
   background-color: #111111;
   color: #ffffff;
@@ -598,42 +626,40 @@ img {
 .hero-slider-nav {
   position: absolute;
   top: 50%;
-  transform: translateY(-60%);
-  width: 52px;
-  height: 52px;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
   color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 20;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
 }
 
 .hero-slider-prev {
-  left: 32px;
+  left: 24px;
 }
 
 .hero-slider-next {
-  right: 32px;
+  right: 24px;
 }
 
 .hero-slider-nav:hover {
   background-color: #111111;
   color: #ffffff;
   border-color: #111111;
-  transform: translateY(-60%) scale(1.1);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .hero-slider-nav:active {
-  transform: translateY(-60%) scale(0.96);
+  transform: translateY(-50%) scale(0.95);
 }
 
 /* Slider Footer: Counter, Dots, Progress - Elevated Above Slider Image */
@@ -801,9 +827,8 @@ img {
   .hero-slide-overlay {
     width: 80%;
     background: linear-gradient(90deg,
-        rgba(255, 255, 255, 0.92) 0%,
-        rgba(255, 255, 255, 0.55) 25%,
-        rgba(255, 255, 255, 0.10) 60%,
+        rgba(255, 255, 255, 0.90) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
         transparent 100%);
   }
 
@@ -883,7 +908,7 @@ img {
 }
 
 .trust-badge-item,
-.hero-trust-badges > span {
+.hero-trust-badges>span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -971,6 +996,11 @@ img {
 }
 
 /* --- Home Shop By Category Grid Cards Section --- */
+#shop-by-category {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
 .home-category-cards-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -2229,6 +2259,51 @@ img {
 
 .reels-carousel-wrapper.is-fitting .carousel-nav-btn {
   display: none !important;
+}
+
+.carousel-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.carousel-nav-btn.prev {
+  left: 0;
+}
+
+.carousel-nav-btn.next {
+  right: 0;
+}
+
+.carousel-nav-btn:hover {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-nav-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .reels-carousel-wrapper.is-fitting .reels-scroll-container {
@@ -3779,13 +3854,14 @@ img {
     display: none !important;
   }
 
-  /* Mobile action bar inside nav drawer (Search + WhatsApp only) */
+  /* Mobile action bar inside nav drawer (Search, Facebook, Instagram, WhatsApp) */
   .mobile-nav-actions {
     display: flex !important;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
+    justify-content: space-between;
     padding-top: 20px;
-    margin-top: 8px;
+    margin-top: 16px;
     border-top: 1px solid var(--border-light);
     width: 100%;
     list-style: none;
@@ -3797,14 +3873,28 @@ img {
     height: auto;
     width: auto;
     border-radius: var(--radius-md);
-    padding: 12px 8px;
+    padding: 10px 4px;
     gap: 6px;
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+    text-decoration: none;
   }
 
   .mobile-action-label {
-    font-size: 11px;
+    display: block !important;
+    font-size: 10.5px;
     font-weight: 600;
     line-height: 1;
+    color: var(--text-primary);
+  }
+
+  .mobile-nav-actions .icon-btn-wa {
+    background-color: var(--accent-wa) !important;
+    color: #ffffff !important;
+  }
+
+  .mobile-nav-actions .icon-btn-wa .mobile-action-label {
+    color: #ffffff !important;
   }
 
   /* Cart button: ash bg with black icon on mobile */
@@ -4131,15 +4221,13 @@ img {
     height: 240px;
     max-height: 400px;
   }
+
   .page-banner-title {
     font-size: 26px;
   }
+
   .page-banner-desc {
-    font-size: 13.5px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    display: none;
   }
 }
 
