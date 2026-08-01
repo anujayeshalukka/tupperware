@@ -312,6 +312,7 @@ img {
   transition: all var(--transition-fast);
   position: relative;
   border: none;
+  transform-origin: center center;
 }
 
 .icon-btn:hover {
@@ -319,6 +320,11 @@ img {
   color: var(--text-primary);
   opacity: 0.7;
   transform: scale(1.08);
+}
+
+.icon-btn-fb svg {
+  margin-left: -1px;
+  transform-origin: center center;
 }
 
 .icon-btn-wa {
