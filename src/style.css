@@ -1003,8 +1003,8 @@ img {
 
 /* --- Home Shop By Category Grid Cards Section --- */
 #shop-by-category {
-  padding-top: 48px;
-  padding-bottom: 64px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .home-category-cards-grid {

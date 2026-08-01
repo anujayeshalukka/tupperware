@@ -367,7 +367,7 @@ function renderHomeView(container) {
       </section>
 
       <!-- Why Choose Tupperware -->
-      <section class="section" id="why-us">
+      <section class="section section-grey" id="why-us">
         <div class="container">
           <div class="section-header">
             <span class="section-subtitle">The Tupperware Difference</span>
@@ -379,7 +379,7 @@ function renderHomeView(container) {
       </section>
 
       <!-- Instagram Video & Reels Showcase Slider -->
-      <section class="section section-grey" id="insta-reels">
+      <section class="section" id="insta-reels">
         <div class="container">
           <div class="section-header">
             <span class="section-subtitle">AS SEEN ON INSTAGRAM</span>
