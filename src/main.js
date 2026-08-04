@@ -26,7 +26,8 @@ let shopFilters = {
   priceMax: 3000,
   capacity: 'all', // all, small (under 750ml), medium (750ml-2L), large (over 2L)
   availability: 'all', // all, in-stock
-  collection: 'all' // all, new, best
+  collection: 'all', // all, new, best
+  discounts: [] // [], ['20-30'], ['10-20'], ['under-10']
 };
 let shopSortBy = 'newest';
 let shopLayoutGrid = true; // true = grid, false = list
@@ -1109,15 +1110,20 @@ function renderShopView(container) {
       <!-- Shop Header Banner -->
       <section class="page-header-banner" style="background-image: url('/images/hero_banner_kitchen.png');">
         <div class="container">
+          <h1 class="page-banner-title">Exclusive Tupperware Catalogue</h1>
+        </div>
+      </section>
+
+      <!-- Breadcrumb Bar Below Banner -->
+      <div class="breadcrumb-bar">
+        <div class="container">
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
             <span>Shop Catalogue</span>
           </div>
-          <h1 class="page-banner-title">Exclusive Tupperware Catalogue</h1>
-          <p class="page-banner-desc">Explore 100% genuine BPA-free kitchenware, airtight dry storages, lunch sets, and premium thermal flasks.</p>
         </div>
-      </section>
+      </div>
 
       <div class="section" style="padding: 48px 0 96px 0;">
         <div class="container">
@@ -1209,6 +1215,28 @@ function renderShopView(container) {
                   <label class="filter-label">
                     <input type="radio" name="shop-collection" value="new" ${shopFilters.collection === 'new' ? 'checked' : ''} />
                     New Arrivals
+                  </label>
+                </div>
+              </div>
+
+              <!-- Discount Filter Widget -->
+              <div class="filter-widget">
+                <div class="filter-widget-header" id="shop-discount-header">
+                  <h5 class="filter-widget-title">Discount</h5>
+                  <span class="filter-toggle-icon" id="shop-discount-toggle-icon">-</span>
+                </div>
+                <div class="filter-list" id="shop-discount-list">
+                  <label class="filter-label">
+                    <input type="checkbox" name="shop-discount" value="20-30" ${shopFilters.discounts.includes('20-30') ? 'checked' : ''} />
+                    <span class="filter-label-text">20% - 30% <span class="filter-count" id="discount-count-20-30">(0)</span></span>
+                  </label>
+                  <label class="filter-label">
+                    <input type="checkbox" name="shop-discount" value="10-20" ${shopFilters.discounts.includes('10-20') ? 'checked' : ''} />
+                    <span class="filter-label-text">10% - 20% <span class="filter-count" id="discount-count-10-20">(0)</span></span>
+                  </label>
+                  <label class="filter-label">
+                    <input type="checkbox" name="shop-discount" value="under-10" ${shopFilters.discounts.includes('under-10') ? 'checked' : ''} />
+                    <span class="filter-label-text">Under 10% <span class="filter-count" id="discount-count-under-10">(0)</span></span>
                   </label>
                 </div>
               </div>
@@ -1318,6 +1346,33 @@ function bindShopFilterListeners() {
     });
   });
 
+  // Discount accordion toggle listener
+  const discountHeader = document.getElementById('shop-discount-header');
+  const discountList = document.getElementById('shop-discount-list');
+  const discountToggleIcon = document.getElementById('shop-discount-toggle-icon');
+
+  if (discountHeader && discountList && discountToggleIcon) {
+    discountHeader.addEventListener('click', () => {
+      const isHidden = discountList.style.display === 'none';
+      if (isHidden) {
+        discountList.style.display = 'flex';
+        discountToggleIcon.textContent = '-';
+      } else {
+        discountList.style.display = 'none';
+        discountToggleIcon.textContent = '+';
+      }
+    });
+  }
+
+  // Discount checkboxes listener
+  document.querySelectorAll('input[name="shop-discount"]').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      const checkedBoxes = document.querySelectorAll('input[name="shop-discount"]:checked');
+      shopFilters.discounts = Array.from(checkedBoxes).map(cb => cb.value);
+      filterAndRenderShopProducts();
+    });
+  });
+
   // Sort listener
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
@@ -1346,10 +1401,70 @@ function bindShopFilterListeners() {
   }
 }
 
+function getProductDiscount(prod) {
+  if (prod.discountPercent !== undefined) return prod.discountPercent;
+  const orig = prod.originalPrice || Math.round(prod.price * 1.25 / 10) * 10;
+  return Math.round(((orig - prod.price) / orig) * 100);
+}
+
+function updateDiscountCounts() {
+  let count2030 = 0;
+  let count1020 = 0;
+  let countUnder10 = 0;
+
+  PRODUCTS.forEach(prod => {
+    if (shopFilters.search) {
+      const matchName = prod.name.toLowerCase().includes(shopFilters.search);
+      const matchCat = prod.categoryName.toLowerCase().includes(shopFilters.search);
+      const matchDesc = prod.shortDesc.toLowerCase().includes(shopFilters.search);
+      const matchBadge = prod.badge.toLowerCase().includes(shopFilters.search);
+      const matchFeatures = prod.features.some(f => f.toLowerCase().includes(shopFilters.search));
+      if (!matchName && !matchCat && !matchDesc && !matchBadge && !matchFeatures) return;
+    }
+
+    if (shopFilters.category !== 'all' && prod.category !== shopFilters.category) return;
+    if (prod.price > shopFilters.priceMax) return;
+
+    if (shopFilters.capacity !== 'all') {
+      const volMatch = prod.capacity.match(/(\d+)\s*(ml|l)/i);
+      if (volMatch) {
+        let value = parseFloat(volMatch[1]);
+        const unit = volMatch[2].toLowerCase();
+        if (unit === 'l') value *= 1000;
+        if (shopFilters.capacity === 'small' && value >= 750) return;
+        if (shopFilters.capacity === 'medium' && (value < 750 || value > 2000)) return;
+        if (shopFilters.capacity === 'large' && value <= 2000) return;
+      }
+    }
+
+    if (shopFilters.availability === 'in-stock' && prod.availability !== 'In Stock') return;
+
+    if (shopFilters.collection !== 'all') {
+      if (shopFilters.collection === 'best' && prod.badge !== 'Best Seller') return;
+      if (shopFilters.collection === 'new' && prod.badge !== 'New Arrival') return;
+    }
+
+    const d = getProductDiscount(prod);
+    if (d >= 20 && d <= 30) count2030++;
+    else if (d >= 10 && d < 20) count1020++;
+    else if (d < 10) countUnder10++;
+  });
+
+  const el2030 = document.getElementById('discount-count-20-30');
+  const el1020 = document.getElementById('discount-count-10-20');
+  const elUnder10 = document.getElementById('discount-count-under-10');
+
+  if (el2030) el2030.textContent = `(${count2030})`;
+  if (el1020) el1020.textContent = `(${count1020})`;
+  if (elUnder10) elUnder10.textContent = `(${countUnder10})`;
+}
+
 function filterAndRenderShopProducts() {
   const container = document.getElementById('shop-products-grid');
   const resultsLabel = document.getElementById('shop-results-count');
   if (!container) return;
+
+  updateDiscountCounts();
 
   // Filter logic
   let filtered = PRODUCTS.filter(prod => {
@@ -1396,6 +1511,18 @@ function filterAndRenderShopProducts() {
     if (shopFilters.collection !== 'all') {
       if (shopFilters.collection === 'best' && prod.badge !== 'Best Seller') return false;
       if (shopFilters.collection === 'new' && prod.badge !== 'New Arrival') return false;
+    }
+
+    // Discount percentage match
+    if (shopFilters.discounts && shopFilters.discounts.length > 0) {
+      const disc = getProductDiscount(prod);
+      const matches = shopFilters.discounts.some(range => {
+        if (range === '20-30') return disc >= 20 && disc <= 30;
+        if (range === '10-20') return disc >= 10 && disc < 20;
+        if (range === 'under-10') return disc < 10;
+        return false;
+      });
+      if (!matches) return false;
     }
 
     return true;
@@ -1506,6 +1633,13 @@ function renderProductDetailView(container, prodId) {
       <!-- Product Detail Header Banner -->
       <section class="page-header-banner" style="background-image: url('${prod.image || '/images/hero_banner_glass.png'}');">
         <div class="container">
+          <h1 class="page-banner-title">${prod.name}</h1>
+        </div>
+      </section>
+
+      <!-- Breadcrumb Bar Below Banner -->
+      <div class="breadcrumb-bar">
+        <div class="container">
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
@@ -1513,10 +1647,8 @@ function renderProductDetailView(container, prodId) {
             <span>/</span>
             <span>${prod.name}</span>
           </div>
-          <h1 class="page-banner-title">${prod.name}</h1>
-          <p class="page-banner-desc">${prod.categoryName || 'Authentic Tupperware'} • Genuine Factory Guarantee</p>
         </div>
-      </section>
+      </div>
 
       <div class="section" style="padding: 48px 0 96px 0;">
         <div class="container">
@@ -2188,15 +2320,20 @@ function renderContactView(container) {
       <!-- Contact Page Header Banner -->
       <section class="page-header-banner" style="background-image: url('/images/hero_banner_store4.jpg');">
         <div class="container">
+          <h1 class="page-banner-title">Get in Touch with Our Exclusive Store</h1>
+        </div>
+      </section>
+
+      <!-- Breadcrumb Bar Below Banner -->
+      <div class="breadcrumb-bar">
+        <div class="container">
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
             <span>Contact Us</span>
           </div>
-          <h1 class="page-banner-title">Get in Touch with Our Exclusive Store</h1>
-          <p class="page-banner-desc">Have questions about product availability, modular kitchen planning, bulk corporate orders, or warranty claims? Send us an enquiry below or chat directly with our store team.</p>
         </div>
-      </section>
+      </div>
 
       <!-- Contact Main Content Section -->
       <section class="section section-grey contact-body-section">
@@ -2514,15 +2651,20 @@ function renderAboutView(container) {
       <!-- About Page Header Banner -->
       <section class="page-header-banner" style="background-image: url('/images/hero_banner_store.webp');">
         <div class="container">
+          <h1 class="page-banner-title">Authentic Tupperware Excellence</h1>
+        </div>
+      </section>
+
+      <!-- Breadcrumb Bar Below Banner -->
+      <div class="breadcrumb-bar">
+        <div class="container">
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
             <span>About Us</span>
           </div>
-          <h1 class="page-banner-title">Authentic Tupperware Excellence</h1>
-          <p class="page-banner-desc">For over two decades, our authorized exclusive store franchise in Kerala has been dedicated to providing genuine 100% BPA-free food storage, kitchen organization, and premium thermal products.</p>
         </div>
-      </section>
+      </div>
 
       <!-- Brand Story & Franchise Heritage -->
       <section class="section section-grey">
@@ -2643,15 +2785,20 @@ function renderPromotionsView(container) {
       <!-- Promotions Page Header Banner -->
       <section class="page-header-banner" style="background-image: url('/images/hero_banner_glass.png');">
         <div class="container">
+          <h1 class="page-banner-title">Special Offers & Featured Combos</h1>
+        </div>
+      </section>
+
+      <!-- Breadcrumb Bar Below Banner -->
+      <div class="breadcrumb-bar">
+        <div class="container">
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
             <span>Promotions & Special Offers</span>
           </div>
-          <h1 class="page-banner-title">Special Offers & Featured Combos</h1>
-          <p class="page-banner-desc">Discover exclusive seasonal deals, discounted kitchen storage bundles, and best-seller hydration combos available across Kerala.</p>
         </div>
-      </section>
+      </div>
 
       <!-- Active Promotions Grid -->
       <section class="section section-grey">
@@ -2784,15 +2931,20 @@ function renderAboutStoreView(container) {
       <!-- About Store Page Header Banner -->
       <section class="page-header-banner" style="background-image: url('/images/hero_banner_store1.png');">
         <div class="container">
+          <h1 class="page-banner-title">Your Authorized Exclusive Store</h1>
+        </div>
+      </section>
+
+      <!-- Breadcrumb Bar Below Banner -->
+      <div class="breadcrumb-bar">
+        <div class="container">
           <div class="breadcrumb">
             <a href="#/">Home</a>
             <span>/</span>
             <span>About Tupstore</span>
           </div>
-          <h1 class="page-banner-title">Your Authorized Exclusive Store</h1>
-          <p class="page-banner-desc">Welcome to Tupstore located in Thiruvalla, Pathanamthitta, Kerala — bringing the world's most trusted kitchen solutions right to your neighborhood.</p>
         </div>
-      </section>
+      </div>
 
       <section class="section section-grey">
         <div class="container">
